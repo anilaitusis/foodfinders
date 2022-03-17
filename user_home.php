@@ -1,4 +1,5 @@
 <?php
+//Temporay user home, used just to verify the location api worked
 echo "<a href='logout.php'>User Logout</a>";
 echo "<br>Welcome";
 echo "<br>This is the user home";
@@ -11,5 +12,4 @@ echo "<br>City: ". $_COOKIE['city'];
 echo "<br>Zipcode: ". $_COOKIE['zip'];
 echo "<br>Latitude: ". $_COOKIE['lat'];
 echo "<br>Longitude: ". $_COOKIE['lon'];
-
 ?>
