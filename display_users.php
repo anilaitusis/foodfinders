@@ -1,4 +1,5 @@
 <?php
+//displays demo accounts, not needed in final product
 include"dbconfig.php";
 $con = mysqli_connect($host,$username,$password,$dbname);
 
