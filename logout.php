@@ -1,4 +1,5 @@
 <?php
+//deletes user's cookies that are used to verify they are logged in
 if (isset($_COOKIE['user_id'])) {
     echo"You have successfully logged out!<br>";
     setcookie("user_id",'',time() - 60);
@@ -14,5 +15,5 @@ if (isset($_COOKIE['user_id'])) {
 else {
     die("Not able to logout");
 }
-echo "<br><a href='index.html'>Return to project homepage</a>";
+echo "<br><a href='index.html'>Return to project homepage</a>"; //brings them back to login page
 ?>
