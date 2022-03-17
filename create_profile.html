@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Create Profile</title>
+    </head>
+    <body>
+        <h3>Create your profile </h3>
+        <p>Please register using your Kean email</p>
+        <form action="create_profile.php" method="post">
+        First Name: <input type="text" name="fname" required="required"> Last Name: <input type="text" name="lname" required="required">
+        <br>Date of Birth <input type="date" id="dob" name="dob">
+        <br>
+        <input type="radio" name="gender" value="male"> Male<br>
+        <input type="radio" name="gender" value="female"> Female<br>
+        <input type="radio" name="gender" value="other"> Other
+        <br>Email: <input type="text" name="email" required="required">
+        <br>Username: <input type="text" name="usrname" required="required">
+        <br>Password: <input type="password" name="password" required="required">
+        <br>Re-enter Password: <input type="password" name="re_password" required="required">
+        <input type="submit" value="Submit">
+    </body>
+</html>
