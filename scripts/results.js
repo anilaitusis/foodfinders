@@ -4,6 +4,7 @@ var food = query.cuisine
 var zipcode = query.zipcode
 
 
+
 // Set on search bar
 
 var map;
@@ -67,60 +68,66 @@ function nearbySearch(search_coord) {
             console.log(error);
         });
 
-    var searchbar = document.getElementById("results")
+    
 
+    var searchbar = document.getElementById("results")
+    $("#zipcode").val(zipcode)
+    $("#cuisine").val(food)
     searchbar.innerHTML +=
         " " + query.zipcode
         + " " + query.cuisine
         + " " + search_coord.lat() + " " + search_coord.lng()
 }
 
-function addMarker(marker, pos, name){
+function addMarker(marker, i) {
     marker = new google.maps.Marker({
-        position: pos,
+        position: data.results[i].geometry.location,
         map: map,
-      });
-      google.maps.event.addListener(marker, 'click', (function(marker) {
-        return function() {
-          infowindow.setContent(name);
-          infowindow.open(map, marker);
+    });
+    google.maps.event.addListener(marker, 'click', (function (marker) {
+        return function () {
+            infowindow.setContent((i + 1) + ". " + data.results[i].name + "<br>" + data.results[i].vicinity);
+            infowindow.open(map, marker);
         }
-      })(marker));
+    })(marker));
 }
 
 // TODO: Randomize recommendation outputs
 function fillSliders(data) {
     var marker
-    var i = 0
 
-    $('.swiper_wrapper, .content').children('.swiper-slide, .card').each(function () {
-        var reference = data.results[i].photos[0].photo_reference
-        var src = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=" + reference + "&key=" + APIKEY
-        // console.log(src)
-        $('#card-' + i + ' .image img').attr("src", src)
+    for (let i = 0; i < 9; i++) {
+        console.log(i)
+        if (data.results[i].photos) {
+            var reference = data.results[i].photos[0].photo_reference
+            var src = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=" + reference + "&key=" + APIKEY
+            $('#card-' + i + ' .image img').attr("src", src)
+        }
+        else {
+            $('#card-' + i + ' .image img').attr("src", "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png")
+        }
+
         $('#card-' + i + ' .name-profession .name').text(data.results[i].name)
+        console.log(data.results[i].name)
         $('#card-' + i + ' .name-profession .address').text(data.results[i].vicinity)
-        
+
         var rating = Math.floor(data.results[i].rating)
-        var j = 0
-        
-        $('#card-' + i + ' .rating').children(".fa-star").each(function () {
-            if(j < rating) {
-                $(this).addClass("fas")
-                $(this).removeClass("far")
-                j++
+        console.log(rating)
+
+        for (let j = 0; j < 5; j++) {
+            console.log(j + " " + rating)
+            if (j < rating) {
+                $('#rating-' + i + ":nth-child(" + (j + 1) + ")").addClass("fas")
+                $('#rating-' + i + ":nth-child(" + (j + 1) + ")").removeClass("far")
             }
             else {
-                $(this).addClass("far")
-                $(this).removeClass("fas")
+                $('#rating-' + i + ":nth-child(" + (j + 1) + ")").addClass("far")
+                $('#rating-' + i + ":nth-child(" + (j + 1) + ")").removeClass("fas")
             }
-        })
+        }
 
-        addMarker(marker, data.results[i].geometry.location, data.results[i].name)
-        
-        i++
-
-    })
+        addMarker(marker, i)
+    }
 }
 
 
