@@ -62,6 +62,8 @@ function nearbySearch(search_coord) {
         .then(function (response) {
             data = response.data
             fillSliders(data)
+            $("#zipcode").val(zipcode)
+            $("#cuisine").val(food)
             // console.log(JSON.stringify(response.data));
         })
         .catch(function (error) {
@@ -70,13 +72,11 @@ function nearbySearch(search_coord) {
 
     
 
-    var searchbar = document.getElementById("results")
-    $("#zipcode").val(zipcode)
-    $("#cuisine").val(food)
-    searchbar.innerHTML +=
-        " " + query.zipcode
-        + " " + query.cuisine
-        + " " + search_coord.lat() + " " + search_coord.lng()
+    // var searchbar = document.getElementById("results")
+    // searchbar.innerHTML +=
+    //     " " + query.zipcode
+    //     + " " + query.cuisine
+    //     + " " + search_coord.lat() + " " + search_coord.lng()
 }
 
 function addMarker(marker, i) {
@@ -95,9 +95,14 @@ function addMarker(marker, i) {
 // TODO: Randomize recommendation outputs
 function fillSliders(data) {
     var marker
+    var iters = data.results.length
+    
+    if (data.results.length > 9) {
+        iters = 9
+    }
+    
 
-    for (let i = 0; i < 9; i++) {
-        console.log(i)
+    for (let i = 0; i < iters; i++) {
         if (data.results[i].photos) {
             var reference = data.results[i].photos[0].photo_reference
             var src = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=" + reference + "&key=" + APIKEY
@@ -112,10 +117,9 @@ function fillSliders(data) {
         $('#card-' + i + ' .name-profession .address').text(data.results[i].vicinity)
 
         var rating = Math.floor(data.results[i].rating)
-        console.log(rating)
 
         for (let j = 0; j < 5; j++) {
-            console.log(j + " " + rating)
+            // console.log(j + " " + rating)
             if (j < rating) {
                 $('#rating-' + i + ":nth-child(" + (j + 1) + ")").addClass("fas")
                 $('#rating-' + i + ":nth-child(" + (j + 1) + ")").removeClass("far")

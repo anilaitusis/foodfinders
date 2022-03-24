@@ -11,10 +11,10 @@
         integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
         crossorigin="anonymous"></script>
 
+    <script src="scripts/search.js"></script>
     <script src="scripts/results.js"></script>
-    <script src="scrips/search.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAi2P_fe95Y9Ee4FvXtKErVt9OF_pfPGgs&callback=initMap"
-        async defer>
+        async>
         </script>
 
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
@@ -25,19 +25,19 @@
 </head>
 
 <body>
-    <div class="container show" id="results">
-        <form id="search-bar">
-            <label for="form-search"></label>
-            <div class="d-flex flex-row">
-                <input type="text" id="zipcode" value="">
-                <input type="text" id="cuisine" value="">
-                <input type="submit" value="Find Restaurant">
-            </div>
+    <div class="container show form">
+        <form id="search">
+          <label for="form-search">Zip Code</label>
+          <input type="text" id="zipcode" placeholder="zipcode">
+          <label for="form-search">Cuisine</label>
+          <input type="text" id="cuisine" placeholder="type of food">
+          <br><br>
+          <input type="submit" value="Find Restaurant">
+          <script src="scripts/search.js"></script>
         </form>
-        <div id="latlng"></div>
-    </div>
+      </div>
     <br>
-    
+
     <!-- Map -->
     <div class="container map-container">
         <div id="map">
@@ -45,13 +45,13 @@
         </div>
     </div>
     <br>
-    
+
     <!-- Selections -->
     <div class=" container result-container">
         <section style="visibility: visible;">
             <div class="swiper mySwiper container">
                 <div class="swiper-wrapper content">
-                    <div class="swiper-slide card" >
+                    <div class="swiper-slide card">
                         <div class="card-content" id="card-0">
                             <div class="image">
                                 <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHx8&w=1000&q=80"
@@ -77,7 +77,7 @@
                             </div> -->
                         </div>
                     </div>
-                    <div class="swiper-slide card" >
+                    <div class="swiper-slide card">
                         <div class="card-content" id="card-1">
                             <div class="image">
                                 <img src="" alt="">
@@ -102,7 +102,7 @@
                             </div> -->
                         </div>
                     </div>
-                    <div class="swiper-slide card" >
+                    <div class="swiper-slide card">
                         <div class="card-content" id="card-2">
                             <div class="image">
                                 <img src="" alt="">
@@ -127,7 +127,7 @@
                             </div> -->
                         </div>
                     </div>
-                    <div class="swiper-slide card" >
+                    <div class="swiper-slide card">
                         <div class="card-content" id="card-3">
                             <div class="image">
                                 <img src="" alt="">
@@ -152,7 +152,7 @@
                             </div> -->
                         </div>
                     </div>
-                    <div class="swiper-slide card" >
+                    <div class="swiper-slide card">
                         <div class="card-content" id="card-4">
                             <div class="image">
                                 <img src="" alt="">
@@ -177,7 +177,7 @@
                             </div> -->
                         </div>
                     </div>
-                    <div class="swiper-slide card" >
+                    <div class="swiper-slide card">
                         <div class="card-content" id="card-5">
                             <div class="image">
                                 <img src="" alt="">
@@ -202,7 +202,7 @@
                             </div> -->
                         </div>
                     </div>
-                    <div class="swiper-slide card" >
+                    <div class="swiper-slide card">
                         <div class="card-content" id="card-6">
                             <div class="image">
                                 <img src="" alt="">
@@ -227,7 +227,7 @@
                             </div> -->
                         </div>
                     </div>
-                    <div class="swiper-slide card" >
+                    <div class="swiper-slide card">
                         <div class="card-content" id="card-7">
                             <div class="image">
                                 <img src="" alt="">
@@ -252,7 +252,7 @@
                             </div> -->
                         </div>
                     </div>
-                    <div class="swiper-slide card" >
+                    <div class="swiper-slide card">
                         <div class="card-content" id="card-8">
                             <div class="image">
                                 <img src="" alt="">
@@ -309,6 +309,7 @@
         </script>
 
         <script src="https://unpkg.com/axios/dist/axios.min.js" aysnc></script>
+        <!-- <script src="scripts/search.js"></script> -->
 </body>
 
 </html>
