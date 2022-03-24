@@ -1,6 +1,7 @@
 var APIKEY = "AIzaSyAi2P_fe95Y9Ee4FvXtKErVt9OF_pfPGgs"
 var query = JSON.parse(localStorage.getItem("query"))
 var food = query.cuisine
+var restaurant = food + " restaurants"
 var zipcode = query.zipcode
 
 
@@ -43,7 +44,7 @@ function nearbySearch(search_coord) {
     // Nearby Search
     const latlng = search_coord.lat() + "%2C" + search_coord.lng()
     const radius = 8000
-    var URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=" + food + "&location=" + latlng + "&radius=" + radius + "&type=restaurant&key=" + APIKEY
+    var URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=" + restaurant + "&location=" + latlng + "&radius=" + radius + "&type=restaurant&key=" + APIKEY
 
     // Custom Herouku app to get past CORS restriction
     // read more: https://stackoverflow.com/questions/47076743/cors-anywhere-herokuapp-com-not-working-503-what-else-can-i-try
