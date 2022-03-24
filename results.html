@@ -11,23 +11,20 @@
         integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
         crossorigin="anonymous"></script>
 
-    <!-- <script src="scripts/results.js"></script> -->
+    <script src="scripts/results.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAi2P_fe95Y9Ee4FvXtKErVt9OF_pfPGgs&callback=initMap"
         async defer>
         </script>
 
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-
-    <!-- ===== Link Swiper's CSS ===== -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="css/results.css">
     <link rel="stylesheet" type="text/css" href="css/cards.css">
 </head>
 
 <body>
     <div class="container show" id="results">
-        hello
         <div id="latlng"></div>
     </div>
 
@@ -39,21 +36,20 @@
         </div>
     </div>
     <br>
-    <div class=" container result-container show">
+    <div class=" container result-container">
         <section style="visibility: visible;">
             <div class="swiper mySwiper container">
                 <div class="swiper-wrapper content">
-
                     <div class="swiper-slide card">
-                        <div class="card-content">
+                        <div class="card-content" id="card-0">
                             <div class="image">
                                 <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHx8&w=1000&q=80"
                                     alt="">
                             </div>
 
                             <div class="name-profession">
-                                <span class="name">Someone Name</span>
-                                <span class="address">Web Developer</span>
+                                <span class="name"></span>
+                                <span class="address"></span>
                             </div>
 
                             <div class="rating">
@@ -71,14 +67,14 @@
                         </div>
                     </div>
                     <div class="swiper-slide card">
-                        <div class="card-content">
+                        <div class="card-content" id="card-1">
                             <div class="image">
-                                <img src="images/img2.jpg" alt="">
+                                <img src="" alt="">
                             </div>
 
                             <div class="name-profession">
-                                <span class="name">Someone Name</span>
-                                <span class="address">Web Developer</span>
+                                <span class="name"></span>
+                                <span class="address"></span>
                             </div>
 
                             <div class="rating">
@@ -96,14 +92,14 @@
                         </div>
                     </div>
                     <div class="swiper-slide card">
-                        <div class="card-content">
+                        <div class="card-content" id="card-2">
                             <div class="image">
-                                <img src="images/img3.jpg" alt="">
+                                <img src="" alt="">
                             </div>
 
                             <div class="name-profession">
-                                <span class="name">Someone Name</span>
-                                <span class="address">Web Developer</span>
+                                <span class="name"></span>
+                                <span class="address"></span>
                             </div>
 
                             <div class="rating">
@@ -121,14 +117,14 @@
                         </div>
                     </div>
                     <div class="swiper-slide card">
-                        <div class="card-content">
+                        <div class="card-content" id="card-3">
                             <div class="image">
-                                <img src="images/img4.jpg" alt="">
+                                <img src="" alt="">
                             </div>
 
                             <div class="name-profession">
-                                <span class="name">Someone Name</span>
-                                <span class="address">Web Developer</span>
+                                <span class="name"></span>
+                                <span class="address"></span>
                             </div>
 
                             <div class="rating">
@@ -146,14 +142,14 @@
                         </div>
                     </div>
                     <div class="swiper-slide card">
-                        <div class="card-content">
+                        <div class="card-content" id="card-4">
                             <div class="image">
-                                <img src="images/img5.jpg" alt="">
+                                <img src="" alt="">
                             </div>
 
                             <div class="name-profession">
-                                <span class="name">Someone Name</span>
-                                <span class="address">Web Developer</span>
+                                <span class="name"></span>
+                                <span class="address"></span>
                             </div>
 
                             <div class="rating">
@@ -171,14 +167,14 @@
                         </div>
                     </div>
                     <div class="swiper-slide card">
-                        <div class="card-content">
+                        <div class="card-content" id="card-5">
                             <div class="image">
-                                <img src="images/img6.jpg" alt="">
+                                <img src="" alt="">
                             </div>
 
                             <div class="name-profession">
-                                <span class="name">Someone Name</span>
-                                <span class="address">Web Developer</span>
+                                <span class="name"></span>
+                                <span class="address"></span>
                             </div>
 
                             <div class="rating">
@@ -196,14 +192,14 @@
                         </div>
                     </div>
                     <div class="swiper-slide card">
-                        <div class="card-content">
+                        <div class="card-content" id="card-6">
                             <div class="image">
-                                <img src="images/img7.jpg" alt="">
+                                <img src="" alt="">
                             </div>
 
                             <div class="name-profession">
-                                <span class="name">Someone Name</span>
-                                <span class="address">Web Developer</span>
+                                <span class="name"></span>
+                                <span class="address"></span>
                             </div>
 
                             <div class="rating">
@@ -221,14 +217,14 @@
                         </div>
                     </div>
                     <div class="swiper-slide card">
-                        <div class="card-content">
+                        <div class="card-content" id="card-7">
                             <div class="image">
-                                <img src="images/img8.jpg" alt="">
+                                <img src="" alt="">
                             </div>
 
                             <div class="name-profession">
-                                <span class="name">Someone Name</span>
-                                <span class="address">Web Developer</span>
+                                <span class="name"></span>
+                                <span class="address"></span>
                             </div>
 
                             <div class="rating">
@@ -246,14 +242,14 @@
                         </div>
                     </div>
                     <div class="swiper-slide card">
-                        <div class="card-content">
+                        <div class="card-content" id="card-8">
                             <div class="image">
-                                <img src="images/img9.jpg" alt="">
+                                <img src="" alt="">
                             </div>
 
                             <div class="name-profession">
-                                <span class="name">Someone Name</span>
-                                <span class="address">Web Developer</span>
+                                <span class="name"></span>
+                                <span class="address"></span>
                             </div>
 
                             <div class="rating">
