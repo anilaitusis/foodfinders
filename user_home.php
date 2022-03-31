@@ -6,7 +6,6 @@ echo "<br>This is the user home";
 
 echo "<br><br>IP: ". $_COOKIE['ip'];
 echo "<br>Country: ". $_COOKIE['country'];
-echo "<br>Country code: ". $_COOKIE['country_code'];
 echo "<br>State: ". $_COOKIE['state'];
 echo "<br>City: ". $_COOKIE['city'];
 echo "<br>Zipcode: ". $_COOKIE['zip'];
