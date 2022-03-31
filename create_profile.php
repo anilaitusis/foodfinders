@@ -19,13 +19,11 @@ if (filter_var($email, FILTER_VALIDATE_EMAIL)) {    //checks if email is Kean em
         die("Please register using a '@kean.edu' email \n");
     }
 }
-
 if ($user_password != $re_password) {   //verifys thats passwords match
     echo "Your Passwords do not match please go back and enter matching passwords \n";
     echo "<br><a href='create_profile.html'>Go Back</a> \n";
     die();
 }
-echo "Welcome $fname \n"; //not needed, can remove later
 
 $sql_dupe_email = "SELECT count(*)exist from 2022S_CPS3961_01.Users where email = '$email'";
 $result_dupe_email = mysqli_query($con, $sql_dupe_email);
@@ -110,5 +108,8 @@ $from = "Dan from Resturant Randomizer<veradan@kean.edu>\n";    //This can be ch
 $headers = 'From: ' . $from . "\r\n";
 $email_subject = "Resturant Randomizer Activation Key";
 
+setcookie("user_id",$user_id,time() + 60*60);
 mail($email, $email_subject, $email_msg, $headers); //emails user their activation key
+header("Location: http://obi.kean.edu/~veradan/CPS3962/activate_user.html"); 
+exit;
 ?>
