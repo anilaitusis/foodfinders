@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>Profile Activation Page</title>
+    </head>
+    <body>
+        An activation key has been sent to your email from 'Dan from Resturant Randomizer', it may be in in your spam folder
+        <br>
+        <form action='activate_user.php' method='post'>
+            <br>Activation key: <input type='text' name='active_key' required='required'>
+            <input type='hidden' name='user_id' value='$user_id'>
+            <input type='submit' value='Submit'>
+        </form>
+       
+    </body>
+</html>
