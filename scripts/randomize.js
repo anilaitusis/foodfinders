@@ -25,7 +25,7 @@ if(form){
 
         // alert("change")
 
-        window.location = "results.html";
+        window.location = `results.html?query=${cuisine}&zipcode=${zipcode}`;
     })
 }
 
