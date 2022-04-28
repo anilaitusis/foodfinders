@@ -1,14 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Anek+Telugu&display=swap');
 
+
+
 body  
 {  
     margin: 0;  
     padding: 0;  
     font-family: 'Anek Telugu', sans-serif;
     background-color: rgba(255, 255, 255);
+
     
    
 }  
+body#login {
+  background-image: url(background.jpg);
+ }
 .login{  
     justify-content: center;
         width: 30%;  
