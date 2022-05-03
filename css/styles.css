@@ -7,12 +7,12 @@ body
     margin: 0;  
     padding: 0;  
     font-family: 'Anek Telugu', sans-serif;
-    background-color: rgba(255, 255, 255);
+    background-color: rgb(255, 255, 255);
 
     
    
 }  
-body#login {
+body.log {
   background-image: url(background.jpg);
  }
 .login{  
@@ -138,13 +138,23 @@ a{
   }
   
   #form-search { 
-    width: auto;
-    line-height: 32px;
-    padding: 20px 10px;
+    width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
   }
   
   .form #form-search {
-    padding: 0 8px;
+    width: 100%;
+  padding: 12px 20px;
+  margin: 0px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
   }
   
   #form-search:hover {
@@ -177,7 +187,9 @@ a{
     text-decoration: none;
   }
   
-  ul.topnav li a:hover:not(.active) {background-color:#a8cd8f;}
+  ul.topnav li a:hover:not(.active) {
+    background-color:#a8cd8f;
+    border-radius: 10px;}
   
   ul.topnav li a.active {background-color: #04AA6D;}
   
