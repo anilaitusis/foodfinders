@@ -10,7 +10,10 @@ $re_password = $_POST['re_password'];
 
 include("dbconfig.php");
 $con = mysqli_connect($host,$username,$password,$dbname);
-
+if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    die("Please use a valid email");
+}
+/*
 if (filter_var($email, FILTER_VALIDATE_EMAIL)) {    //checks if email is Kean email, not needed but can remove later
     $netID = explode('@', $email);
     $domain = array_pop($netID);
@@ -19,6 +22,7 @@ if (filter_var($email, FILTER_VALIDATE_EMAIL)) {    //checks if email is Kean em
         die("Please register using a '@kean.edu' email \n");
     }
 }
+*/
 if ($user_password != $re_password) {   //verifys thats passwords match
     echo "Your Passwords do not match please go back and enter matching passwords \n";
     echo "<br><a href='create_profile.html'>Go Back</a> \n";
@@ -96,7 +100,7 @@ $exp_date_str = date('M d, Y', $exp_date);
 
 $key = substr(md5(microtime()),rand(0,26),6); //generates random key
 $sql_insert_activation = "insert into 2022S_CPS3961_01.Activation_keys
-    values('$user_id', '$key', DATE_ADD(NOW(), INTERVAL 7 DAY))";
+    values('$user_id', '$key')";
 $result_insert_activation = mysqli_query($con, $sql_insert_activation); //inserts key and expiration date into Activation_keys table
 
 if(!$result_insert_activation) {

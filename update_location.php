@@ -19,20 +19,20 @@ if($IPv4[0] == 10 || ($IPv4[0] == 131 && $IPv4[1] == 125)) { //checks if you wer
     setcookie("state", 'NJ', time() + 60*60);
 }
 else {
-    $geo_url = 'https://freegeoip.app/json/' . $ip; //retrieves user location inforamtion using their ip
+    $geo_url = 'http://ip-api.com/json/' . $ip; //retrieves user location inforamtion using their ip
     $geo_file = file_get_contents($geo_url);
     $geo_arr = json_decode($geo_file, true);
-    $country = $geo_arr['country_code'];
+    $country = $geo_arr['countryCode'];
     setcookie("country", $country, time() + 60*60);
-    $zip = $geo_arr['zip_code'];
+    $zip = $geo_arr['zip'];
     setcookie("zip", $zip, time() + 60*60);
-    $lat = $geo_arr['latitude'];
+    $lat = $geo_arr['lat'];
     setcookie("lat", $lat, time() + 60*60);
-    $lon = $geo_arr['longitude'];
+    $lon = $geo_arr['lon'];
     setcookie("lon", $lon, time() + 60*60);
     $city = $geo_arr['city'];
     setcookie("city", $city, time() + 60*60);
-    $state = $geo_arr['region_code'];
+    $state = $geo_arr['region'];
     setcookie("state", $state, time() + 60*60);
 }
 include("dbconfig.php");
@@ -59,4 +59,3 @@ else {
         die('Insert was not successful'. mysqli_error($con));
     }
 }
-?>
