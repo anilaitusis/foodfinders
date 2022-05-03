@@ -1,4 +1,3 @@
-var APIKEY = "AIzaSyAi2P_fe95Y9Ee4FvXtKErVt9OF_pfPGgs"
 var params = window.location.search.split("&")
 var query = params[0].split("=")[1]
 var zipcode = params[1].split("=")[1]
@@ -29,7 +28,6 @@ function codeAddress(address) {
             map.setCenter(results[0].geometry.location);
             search_coord = results[0].geometry.location
             nearbySearch(search_coord)
-            // textSearch(search_coord)
         } else {
             alert('Geocode was not successful for the following reason: ' + status);
         }
@@ -45,24 +43,7 @@ function nearbySearch(latlng) {
     }
 
     service = new google.maps.places.PlacesService(map);
-    // Nearby Search does not 
     service.nearbySearch(request, callback)
-    console.log("completed")
-
-    $("#zipcode2").val(zipcode)
-    $("#cuisine").val(query.replaceAll("+", " "))
-}
-
-function textSearch(latlng) {
-    let request = {
-        location: { lat: latlng.lat(), lng: latlng.lng() },
-        radius: '8000',     // radius is measured in meters
-        query: query,
-        type: ['restaurant']
-    }
-
-    service = new google.maps.places.PlacesService(map);
-    service.textSearch(request, callback)
     console.log("completed")
 
     $("#zipcode2").val(zipcode)
@@ -75,104 +56,16 @@ function callback(results, status, pagination) {
     // If there are search results
     if (status === google.maps.places.PlacesServiceStatus.OK && results) {
         console.log(results)
-        fillSliders(results)
+        fillSliders(results, "#swiper-container")
         // Create Markers
         for (let i = 0; i < results.length; i++) {
             createMarker(results[i], i);
         }
     }
     // If there are no search results
+    // TODO: Add Results not found page
     else if (status === google.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
         console.log("No results found!")
-    }
-}
-
-function addCard(container_class, i) {
-    let card = $("<div>", {
-        "class": "swiper-slide card"
-    })
-
-    let content = $("<div>", {
-        "id": "card-" + i,
-        "class": "card-content"
-    })
-
-    let img_container = $("<div>", {
-        "class": "image"
-    })
-
-    let img = $("<img>", {
-        "src": ""
-    })
-
-    let info = $("<div>", {
-        "class": "name-profession"
-    })
-
-    let name = $("<div>", {
-        "class": "name"
-    })
-
-    let address = $("<div>", {
-        "class": "address"
-    })
-
-    let rating = $("<div>", {
-        "id": "rating-" + i,
-        "class": "rating"
-    })
-
-    let star = $("<div>", {
-        "class": "fas fa-star"
-    })
-
-    rating.append(star)
-    info.append(name)
-    info.append(address)
-    img_container.append(img)
-    content.append(img_container)
-    content.append(info)
-    content.append(rating)
-    card.append(content)
-    $(container_class).append(card)
-}
-
-function fillSliders(results) {
-    var iters = results.length
-
-    if (results.length > 9) {
-        iters = 18
-    }
-
-    for (let i = 0; i < iters; i++) {
-        addCard("#swiper-container", i)
-        if (results[i].photos) {
-            // var reference = results[i].photos[0].photo_reference
-            var src = results[i].photos[0].getUrl()
-            $('#card-' + i + ' .image img').attr("src", src)
-        }
-        else {
-            $('#card-' + i + ' .image img').attr("src", "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png")
-        }
-
-        $('#card-' + i + ' .name-profession .name').text(results[i].name)
-        console.log(results[i].name)
-        $('#card-' + i + ' .name-profession .address').text(results[i].vicinity)
-
-        var rating = Math.floor(results[i].rating)
-
-        // TODO: Update Star Ratings
-        for (let j = 0; j < 5; j++) {
-            // console.log(j + " " + rating)
-            if (j < rating) {
-                $('#rating-' + i + ":nth-child(" + (j + 1) + ")").addClass("fas")
-                $('#rating-' + i + ":nth-child(" + (j + 1) + ")").removeClass("far")
-            }
-            else {
-                $('#rating-' + i + ":nth-child(" + (j + 1) + ")").addClass("far")
-                $('#rating-' + i + ":nth-child(" + (j + 1) + ")").removeClass("fas")
-            }
-        }
     }
 }
 
@@ -184,8 +77,15 @@ function createMarker(place, i) {
         position: place.geometry.location,
     });
 
+    // TODO: Highlight markers when on a specific page on the slides
     google.maps.event.addListener(marker, "click", () => {
         infowindow.setContent((i + 1) + ". " + place.name + "<br>" + place.vicinity);
         infowindow.open(map, marker);
+        map.panTo(marker.getPosition());
     });
+}
+
+// TODO: Implement voting system
+function vote(){
+
 }

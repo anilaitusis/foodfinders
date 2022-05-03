@@ -2,15 +2,29 @@
 // Case 2: User is logged in
 
 var isLoggedIn = false;
+var coords
+var map
+var service
+var results
 
 // Step 1. Get user location 
 // Step 2. API call for best rated restaurants in that area --> "best restaurants in my area"
 // Step 3. Count Restaurant Query
 // Step 4. Put Data into cards
 
+function initMap() {
+    let mapOptions = {
+        center: new google.maps.LatLng(-34.397, 150.644),
+        zoom: 12
+    }
+    map = new google.maps.Map(document.getElementById("map"), mapOptions)
+    userSearch()
+}
+
+
 // Check if user is logged in
-function userSearch(loggedIn) {
-    if (loggedIn) {
+function userSearch() {
+    if (isLoggedIn) {
         console.log('User is logged in')
         // Log in stuff
     }
@@ -28,7 +42,8 @@ function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(setGeoCookie, showError);
     } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
+        // TODO: Edit this for later
+        console.log("Geolocation is not supported by this browser.");
     }
 }
 
@@ -42,6 +57,7 @@ function setGeoCookie(position) {
     let expires = "expires=" + d.toUTCString();
     document.cookie = "lat_lng=" + cookie_val + ";" + expires;
     showPosition(position)
+    searchBestInArea(position)
 }
 
 function showPosition(position) {
@@ -63,50 +79,45 @@ function cookieExists(name){
 function showError(error) {
     switch (error.code) {
         case error.PERMISSION_DENIED:
-            x.innerHTML = "User denied the request for Geolocation."
+            console.log("User denied the request for Geolocation.")
             break;
         case error.POSITION_UNAVAILABLE:
-            x.innerHTML = "Location information is unavailable."
+            console.log("Location information is unavailable.")
             break;
         case error.TIMEOUT:
-            x.innerHTML = "The request to get user location timed out."
+            console.log("The request to get user location timed out.")
             break;
         case error.UNKNOWN_ERROR:
-            x.innerHTML = "An unknown error occurred."
+            console.log("An unknown error occurred.")
             break;
     }
 }
 
-function searchBestInArea() {
-    let coords = document.cookie.split(";")[0].split("=")[1].split("|")
-    let lat = coords[0]
-    let long = coords[1]
-    const keyword = "best restaurants in my area"
+function searchBestInArea(position) {
+    coords = position
+    const query = "best+restaurants+in+my+area"
 
-    var URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=&location=" + latlng + "&radius=" + radius + "&type=restaurant&key=" + APIKEY
+    let service = new google.maps.places.PlacesService(map);
+    let request = {
+        location: {lat: position.coords.latitude, lng: position.coords.longitude},
+        radius: '8000',
+        keyword: query,
+        type: ['restaurant'],
+        rankby: google.maps.places.RankBy.PROMINENCE
+    }
+    // console.log("here")
+    service.nearbySearch(request, callback)
+    // console.log("here")
+}
 
-    // Custom Herouku app to get past CORS restriction
-    // read more: https://stackoverflow.com/questions/47076743/cors-anywhere-herokuapp-com-not-working-503-what-else-can-i-try
-    const proxyurl = "https://morning-escarpment-59145.herokuapp.com/" + URL;
-
-    var config = {
-        method: 'get',
-        url: proxyurl,
-        headers: {}
-    };
-
-    // IMPORTANT! DO NOT FORGET TO INCLUDE WITH AXIOS REQUESTS
-    delete axios.defaults.headers.common["Authorization"];
-
-    axios(config)
-        .then(function (response) {
-            data = response.data
-            fillSliders(data)
-            $("#zipcode").val(zipcode)
-            $("#cuisine").val(food)
-            // console.log(JSON.stringify(response.data));
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+function callback(results, status) {
+    if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+        results = results
+        fillSliders(results, "#recommended") 
+    }
+    // If there are no search results
+    // TODO: Add Results not found page
+    else if (status === google.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
+        console.log("No results found!")
+    }
 }
