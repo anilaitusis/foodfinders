@@ -12,7 +12,7 @@ var searchresults
 function initMap() {
     let mapOptions = {
         center: new google.maps.LatLng(-34.397, 150.644),
-        zoom: 10
+        zoom: 12
     }
     map = new google.maps.Map(document.getElementById("map"), mapOptions)
 
@@ -29,6 +29,7 @@ function codeAddress(address) {
             map.setCenter(results[0].geometry.location);
             search_coord = results[0].geometry.location
             nearbySearch(search_coord)
+            // textSearch(search_coord)
         } else {
             alert('Geocode was not successful for the following reason: ' + status);
         }
@@ -38,7 +39,7 @@ function codeAddress(address) {
 function nearbySearch(latlng) {
     let request = {
         location: { lat: latlng.lat(), lng: latlng.lng() },
-        radius: '8000',
+        radius: '8000',     // radius is measured in meters
         keyword: query,
         type: ['restaurant']
     }
@@ -47,13 +48,29 @@ function nearbySearch(latlng) {
     // Nearby Search does not 
     service.nearbySearch(request, callback)
     console.log("completed")
-    
+
     $("#zipcode2").val(zipcode)
     $("#cuisine").val(query.replaceAll("+", " "))
 }
 
-function callback(results, status) {
-    
+function textSearch(latlng) {
+    let request = {
+        location: { lat: latlng.lat(), lng: latlng.lng() },
+        radius: '8000',     // radius is measured in meters
+        query: query,
+        type: ['restaurant']
+    }
+
+    service = new google.maps.places.PlacesService(map);
+    service.textSearch(request, callback)
+    console.log("completed")
+
+    $("#zipcode2").val(zipcode)
+    $("#cuisine").val(query.replaceAll("+", " "))
+}
+
+function callback(results, status, pagination) {
+    searchresults = results
     console.log(status)
     // If there are search results
     if (status === google.maps.places.PlacesServiceStatus.OK && results) {
@@ -65,47 +82,70 @@ function callback(results, status) {
         }
     }
     // If there are no search results
-    else if(status === google.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
+    else if (status === google.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
         console.log("No results found!")
     }
+}
+
+function addCard(container_class, i) {
+    let card = $("<div>", {
+        "class": "swiper-slide card"
+    })
+
+    let content = $("<div>", {
+        "id": "card-" + i,
+        "class": "card-content"
+    })
+
+    let img_container = $("<div>", {
+        "class": "image"
+    })
+
+    let img = $("<img>", {
+        "src": ""
+    })
+
+    let info = $("<div>", {
+        "class": "name-profession"
+    })
+
+    let name = $("<div>", {
+        "class": "name"
+    })
+
+    let address = $("<div>", {
+        "class": "address"
+    })
+
+    let rating = $("<div>", {
+        "id": "rating-" + i,
+        "class": "rating"
+    })
+
+    let star = $("<div>", {
+        "class": "fas fa-star"
+    })
+
+    rating.append(star)
+    info.append(name)
+    info.append(address)
+    img_container.append(img)
+    content.append(img_container)
+    content.append(info)
+    content.append(rating)
+    card.append(content)
+    $(container_class).append(card)
 }
 
 function fillSliders(results) {
     var iters = results.length
 
     if (results.length > 9) {
-        iters = 9
-    }
-
-    // TODO: Implement dynamic adding to card sliders
-    if (false){
-        /*
-        Slider Template
-        - - - - - - - - -
-        <div class="swiper-slide card">
-            <div class="card-content" id="card-1">
-                <div class="image">
-                    <img src="" alt="">
-                </div>
-
-                <div class="name-profession">
-                    <span class="name"></span>
-                    <span class="address"></span>
-                </div>
-
-                <div class="rating" id="rating-1">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-            </div>
-        </div>
-        */
+        iters = 18
     }
 
     for (let i = 0; i < iters; i++) {
+        addCard("#swiper-container", i)
         if (results[i].photos) {
             // var reference = results[i].photos[0].photo_reference
             var src = results[i].photos[0].getUrl()
@@ -121,7 +161,7 @@ function fillSliders(results) {
 
         var rating = Math.floor(results[i].rating)
 
-        // Star Rating Update
+        // TODO: Update Star Ratings
         for (let j = 0; j < 5; j++) {
             // console.log(j + " " + rating)
             if (j < rating) {
