@@ -5,7 +5,7 @@ if(form){
     form.addEventListener("submit", function(e){
         localStorage.clear()
 
-        var cuisine = document.getElementById("cuisine").value
+        var cuisine = document.getElementById("cuisine").value.replaceAll(" ", "+")
         var zipcode = document.getElementById("zipcode2").value
         var query = {
             "cuisine": cuisine,

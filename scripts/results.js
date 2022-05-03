@@ -1,13 +1,13 @@
 var APIKEY = "AIzaSyAi2P_fe95Y9Ee4FvXtKErVt9OF_pfPGgs"
-var query = JSON.parse(localStorage.getItem("query"))
-var food = query.cuisine
-var restaurant = food + " restaurants"
-var zipcode = query.zipcode
-
-
+var params = window.location.search.split("&")
+var query = params[0].split("=")[1]
+var zipcode = params[1].split("=")[1]
+// var query = JSON.parse(localStorage.getItem("query"))
+// var food = query.cuisine.replace(" ", "+")
+// var food_arr = food_unfiltered.split(" ")
+// var restaurant = food
 
 // Set on search bar
-
 var map;
 var geocoder;
 var infowindow;
@@ -44,7 +44,7 @@ function nearbySearch(search_coord) {
     // Nearby Search
     const latlng = search_coord.lat() + "%2C" + search_coord.lng()
     const radius = 8000
-    var URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=" + restaurant + "&location=" + latlng + "&radius=" + radius + "&type=restaurant&key=" + APIKEY
+    var URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=" + query + "&location=" + latlng + "&radius=" + radius + "&type=restaurant&key=" + APIKEY
 
     // Custom Herouku app to get past CORS restriction
     // read more: https://stackoverflow.com/questions/47076743/cors-anywhere-herokuapp-com-not-working-503-what-else-can-i-try
@@ -62,22 +62,20 @@ function nearbySearch(search_coord) {
     axios(config)
         .then(function (response) {
             data = response.data
+            console.log(data.status + "| Results: " + data.results.length)
+
+            if(data.status === "ZERO_RESULTS") {
+                // TODO: Add Results not found part
+            }
+            console.log(data)
+
             fillSliders(data)
-            $("#zipcode").val(zipcode)
-            $("#cuisine").val(food)
-            // console.log(JSON.stringify(response.data));
+            $("#zipcode2").val(zipcode)
+            $("#cuisine").val(query.replaceAll("+", " "))
         })
         .catch(function (error) {
             console.log(error);
         });
-
-    
-
-    // var searchbar = document.getElementById("results")
-    // searchbar.innerHTML +=
-    //     " " + query.zipcode
-    //     + " " + query.cuisine
-    //     + " " + search_coord.lat() + " " + search_coord.lng()
 }
 
 function addMarker(marker, i) {
@@ -97,11 +95,36 @@ function addMarker(marker, i) {
 function fillSliders(data) {
     var marker
     var iters = data.results.length
-    
+
     if (data.results.length > 9) {
         iters = 9
     }
-    
+
+    // TODO: Implement dynamic adding to card sliders
+    /*
+    Slider Template
+    - - - - - - - - -
+    <div class="swiper-slide card">
+        <div class="card-content" id="card-1">
+            <div class="image">
+                <img src="" alt="">
+            </div>
+
+            <div class="name-profession">
+                <span class="name"></span>
+                <span class="address"></span>
+            </div>
+
+            <div class="rating" id="rating-1">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+            </div>
+        </div>
+    </div>
+    */
 
     for (let i = 0; i < iters; i++) {
         if (data.results[i].photos) {
@@ -119,6 +142,7 @@ function fillSliders(data) {
 
         var rating = Math.floor(data.results[i].rating)
 
+        // Star Rating Update
         for (let j = 0; j < 5; j++) {
             // console.log(j + " " + rating)
             if (j < rating) {

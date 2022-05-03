@@ -12,8 +12,9 @@
         crossorigin="anonymous"></script>
 
     <script src="scripts/search.js"></script>
-    <script src="scripts/results.js"></script>
-    
+    <!-- <script src="scripts/results.js"></script> -->
+    <script src="scripts/resultsV2.js"></script>
+
 
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
@@ -26,7 +27,7 @@
     <div class="container show form">
         <form id="search">
             <label for="form-search">Zip Code</label>
-            <input type="text" id="zipcode" placeholder="zipcode">
+            <input type="text" id="zipcode2" placeholder="zipcode">
             <label for="form-search">Cuisine</label>
             <input type="text" id="cuisine" placeholder="type of food">
             <br><br>
@@ -39,9 +40,10 @@
     <!-- Map -->
     <div class="container map-container">
         <div id="map"></div>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAi2P_fe95Y9Ee4FvXtKErVt9OF_pfPGgs&callback=initMap"
-        async>
-        </script>
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAi2P_fe95Y9Ee4FvXtKErVt9OF_pfPGgs&libraries=places&callback=initMap"
+            async>
+            </script>
     </div>
     <br>
 
@@ -49,7 +51,7 @@
     <div class=" container result-container">
         <section style="visibility: visible;">
             <div class="swiper mySwiper container">
-                <div class="swiper-wrapper content">
+                <div class="swiper-wrapper content" id="swiper-container">
                     <div class="swiper-slide card">
                         <div class="card-content" id="card-0">
                             <div class="image">
@@ -69,11 +71,6 @@
                                 <i class="far fa-star"></i>
                                 <i class="far fa-star"></i>
                             </div>
-
-                            <!-- <div class="button">
-                                <button class="aboutMe">About Me</button>
-                                <button class="hireMe">Hire Me</button>
-                            </div> -->
                         </div>
                     </div>
                     <div class="swiper-slide card">
@@ -94,11 +91,6 @@
                                 <i class="far fa-star"></i>
                                 <i class="far fa-star"></i>
                             </div>
-
-                            <!-- <div class="button">
-                                <button class="aboutMe">About Me</button>
-                                <button class="hireMe">Hire Me</button>
-                            </div> -->
                         </div>
                     </div>
                     <div class="swiper-slide card">
@@ -119,11 +111,6 @@
                                 <i class="far fa-star"></i>
                                 <i class="far fa-star"></i>
                             </div>
-
-                            <!-- <div class="button">
-                                <button class="aboutMe">About Me</button>
-                                <button class="hireMe">Hire Me</button>
-                            </div> -->
                         </div>
                     </div>
                     <div class="swiper-slide card">
@@ -144,11 +131,6 @@
                                 <i class="far fa-star"></i>
                                 <i class="far fa-star"></i>
                             </div>
-
-                            <!-- <div class="button">
-                                <button class="aboutMe">About Me</button>
-                                <button class="hireMe">Hire Me</button>
-                            </div> -->
                         </div>
                     </div>
                     <div class="swiper-slide card">
@@ -169,11 +151,6 @@
                                 <i class="far fa-star"></i>
                                 <i class="far fa-star"></i>
                             </div>
-
-                            <!-- <div class="button">
-                                <button class="aboutMe">About Me</button>
-                                <button class="hireMe">Hire Me</button>
-                            </div> -->
                         </div>
                     </div>
                     <div class="swiper-slide card">
@@ -194,11 +171,6 @@
                                 <i class="far fa-star"></i>
                                 <i class="far fa-star"></i>
                             </div>
-
-                            <!-- <div class="button">
-                                <button class="aboutMe">About Me</button>
-                                <button class="hireMe">Hire Me</button>
-                            </div> -->
                         </div>
                     </div>
                     <div class="swiper-slide card">
@@ -219,11 +191,6 @@
                                 <i class="far fa-star"></i>
                                 <i class="far fa-star"></i>
                             </div>
-
-                            <!-- <div class="button">
-                                <button class="aboutMe">About Me</button>
-                                <button class="hireMe">Hire Me</button>
-                            </div> -->
                         </div>
                     </div>
                     <div class="swiper-slide card">
@@ -244,11 +211,6 @@
                                 <i class="far fa-star"></i>
                                 <i class="far fa-star"></i>
                             </div>
-
-                            <!-- <div class="button">
-                                <button class="aboutMe">About Me</button>
-                                <button class="hireMe">Hire Me</button>
-                            </div> -->
                         </div>
                     </div>
                     <div class="swiper-slide card">
@@ -269,14 +231,8 @@
                                 <i class="far fa-star"></i>
                                 <i class="far fa-star"></i>
                             </div>
-
-                            <!-- <div class="button">
-                                <button class="aboutMe">About Me</button>
-                                <button class="hireMe">Hire Me</button>
-                            </div> -->
                         </div>
                     </div>
-
                 </div>
             </div>
 

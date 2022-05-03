@@ -3,14 +3,16 @@
 
 var isLoggedIn = false;
 
-// Step 1. Get user location
+// Step 1. Get user location 
 // Step 2. API call for best rated restaurants in that area --> "best restaurants in my area"
 // Step 3. Count Restaurant Query
 // Step 4. Put Data into cards
 
+// Check if user is logged in
 function userSearch(loggedIn) {
     if (loggedIn) {
         console.log('User is logged in')
+        // Log in stuff
     }
     else {
         console.log('User is not logged in')
@@ -18,6 +20,8 @@ function userSearch(loggedIn) {
     }
 }
 
+
+// Step 1. Get user location
 function getLocation() {
 
     // if (navigator.geolocation && cookieExists("lat-lng")) {
@@ -40,6 +44,10 @@ function setGeoCookie(position) {
     showPosition(position)
 }
 
+function showPosition(position) {
+    console.log(position.coords.latitude, position.coords.longitude)
+}
+
 // TODO: Determine if needed
 // Check if a cookie with that name exists
 function cookieExists(name){
@@ -50,10 +58,6 @@ function cookieExists(name){
         }
     }
     return false;
-}
-
-function showPosition(position) {
-    console.log(position.coords.latitude, position.coords.longitude)
 }
 
 function showError(error) {
@@ -74,9 +78,35 @@ function showError(error) {
 }
 
 function searchBestInArea() {
-    var coords = document.cookie.split(";")[0].split("=")[1].split("|")
-    var lat = coords[0]
-    var long = coords[1]
+    let coords = document.cookie.split(";")[0].split("=")[1].split("|")
+    let lat = coords[0]
+    let long = coords[1]
+    const keyword = "best restaurants in my area"
 
-    
+    var URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=&location=" + latlng + "&radius=" + radius + "&type=restaurant&key=" + APIKEY
+
+    // Custom Herouku app to get past CORS restriction
+    // read more: https://stackoverflow.com/questions/47076743/cors-anywhere-herokuapp-com-not-working-503-what-else-can-i-try
+    const proxyurl = "https://morning-escarpment-59145.herokuapp.com/" + URL;
+
+    var config = {
+        method: 'get',
+        url: proxyurl,
+        headers: {}
+    };
+
+    // IMPORTANT! DO NOT FORGET TO INCLUDE WITH AXIOS REQUESTS
+    delete axios.defaults.headers.common["Authorization"];
+
+    axios(config)
+        .then(function (response) {
+            data = response.data
+            fillSliders(data)
+            $("#zipcode").val(zipcode)
+            $("#cuisine").val(food)
+            // console.log(JSON.stringify(response.data));
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 }
