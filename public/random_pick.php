@@ -59,8 +59,12 @@ else {
 
 $cuis_choice = weighted_random_simple($cuis_id, $cuis_rating);
 setcookie("cuis_choice",$u_id,time() + 60*10);
-header("Location: https://the-food-engine.herokuapp.com/user_home.php?cuis_choice=".$cuis_choice);
-exit();
+
+$host  = $_SERVER['HTTP_HOST'];
+$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/');
+$extra = "user_home.php?cuis_choice=".$cuis_choice;
+header("Location: http://$host$uri/$extra");
+exit;
 
 //https://theprogrammersfirst.wordpress.com/2020/07/22/generating-random-results-by-weight-in-php/
 function weighted_random_simple($values, $weights){ 

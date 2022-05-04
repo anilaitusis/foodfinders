@@ -114,6 +114,10 @@ $email_subject = "Resturant Randomizer Activation Key";
 
 setcookie("user_id",$user_id,time() + 60*60);
 mail($email, $email_subject, $email_msg, $headers); //emails user their activation key
-header("Location: https://the-food-engine.herokuapp.com/activate_user.html"); 
+
+$host  = $_SERVER['HTTP_HOST'];
+$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/');
+$extra = "activate_user.html";
+header("Location: http://$host$uri/$extra");
 exit;
 ?>

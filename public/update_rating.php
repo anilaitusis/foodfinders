@@ -18,8 +18,11 @@ echo $u_id;
 for($i = 0; $i < count($cuis_rating); $i++) {
     if(!is_numeric($cuis_rating[$i]) or $cuis_rating[$i] < 0 or $cuis_rating[$i] > 3) {
         $update_success = "invalid";
-        header("Location: https://the-food-engine.herokuapp.com/edit_preferences.php?update_success=".$update_success);
-        exit();
+        $host  = $_SERVER['HTTP_HOST'];
+        $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/');
+        $extra = "edit_preferences.php?update_success=";
+        header("Location: http://$host$uri/$extra");
+        exit;
     }
 }
 
@@ -90,6 +93,10 @@ for($i = 0; $i < count($cuis_rating); $i++) {
     }
 }
 $update_success = "success";
-header("Location: https://the-food-engine.herokuapp.com/edit_preferences.php?update_success=".$update_success);
-exit();
+$host  = $_SERVER['HTTP_HOST'];
+$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/');
+$extra = "edit_preferences.php?update_success=";
+header("Location: http://$host$uri/$extra");
+exit;
+
 ?>

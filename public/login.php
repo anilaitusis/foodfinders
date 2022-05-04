@@ -20,14 +20,20 @@ if($result) {
             setcookie("user_id",$user_id,time() + 60*60);   //sets $user_id and $c_username as cookies
             if($c_password == $cust_password){  //checks if the password they entered matches the one in the DB
             if(is_null($last_login)) {    //checks if user is active, if not requests their activation key
-                header("Location: https://the-food-engine.herokuapp.com/activate_user.html"); 
+                $host  = $_SERVER['HTTP_HOST'];
+                $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/');
+                $extra = 'activate_user.html';
+                header("Location: http://$host$uri/$extra");
                 exit;
             }
             setcookie("username",$c_username,time() + 60*60);
             include("update_last_login.php"); //updates the last_login in the User table
             include("update_location.php"); //updates the user location cookies        
-            header("Location: https://the-food-engine.herokuapp.com/user_home.php"); //brings user to user_home.php once logged in, can bring them to an HTML page if better option
-            exit;
+            $host  = $_SERVER['HTTP_HOST'];
+                $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/');
+                $extra = 'user_home.php';
+                header("Location: http://$host$uri/$extra");
+                exit;
         }
             else {
                 die("Wrong password");

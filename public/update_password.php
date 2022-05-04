@@ -30,18 +30,27 @@ else {
 $pass_success = '';
 if($old_password != $pass) {
     $pass_success = "invalid";
-    header("Location: https://the-food-engine.herokuapp.com/edit_preferences.php?pass_success=".$pass_success);
-    exit();
+    $host  = $_SERVER['HTTP_HOST'];
+    $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/');
+    $extra = "edit_preferences.php?pass_success=";
+    header("Location: http://$host$uri/$extra");
+    exit;
 }
 elseif($new_password == $old_password) {
     $pass_success = "not_new";
-    header("Location: https://the-food-engine.herokuapp.com/edit_preferences.php?pass_success=".$pass_success);
-    exit();
+    $host  = $_SERVER['HTTP_HOST'];
+    $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/');
+    $extra = "edit_preferences.php?pass_success=";
+    header("Location: http://$host$uri/$extra");
+    exit;
 }
 elseif($new_password != $re_password) {
     $pass_success = "mismatch";
-    header("Location: https://the-food-engine.herokuapp.com/edit_preferences.php?pass_success=".$pass_success);
-    exit(); 
+    $host  = $_SERVER['HTTP_HOST'];
+    $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/');
+    $extra = "edit_preferences.php?pass_success=";
+    header("Location: http://$host$uri/$extra");
+    exit;
 }
 else {
     $sql_update_pass = "UPDATE 2022S_CPS3961_01.Users
@@ -53,8 +62,11 @@ else {
     }
     else {
         $pass_success = "success";
-        header("Location: https://the-food-engine.herokuapp.com/edit_preferences.php?pass_success=".$pass_success);
-        exit(); 
+        $host  = $_SERVER['HTTP_HOST'];
+        $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/');
+        $extra = "edit_preferences.php?pass_success=";
+        header("Location: http://$host$uri/$extra");
+        exit;
     }
 }
 

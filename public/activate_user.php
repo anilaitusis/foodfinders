@@ -25,7 +25,11 @@ if($result_active) {
                 setcookie("username",$c_username,time() + 60*60);
                 include("update_last_login.php");
                 include("update_location.php"); //updates user location cookies
-                header("Location: https://the-food-engine.herokuapp.com/user_home.php"); //brings user to user_home.php once logged in, can bring them to an HTML page if better option
+
+                $host  = $_SERVER['HTTP_HOST'];
+                $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/');
+                $extra = "user_home.php";
+                header("Location: http://$host$uri/$extra");
                 exit;
             }
             else {
