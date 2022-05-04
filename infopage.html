@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Restaurant Info</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/results.css">
+
+    <script src="scripts/autocomplete.js"></script>
+    <script src="scripts/restaurantInfo.js"></script>
+    <script src="scripts/search.js"></script>
+</head>
+
+<body>
+    <ul class="topnav">
+        <li><a href="/homepage.html">Restaurant Randomizer</a></li>
+        <li class="right"><a href="create_profile.html">Create Account</a></li>
+        <li class="right"><a href="login.html"> Log in</a></li>
+    </ul>
+    <div class="container map-container">
+        <div id="map"></div>
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAi2P_fe95Y9Ee4FvXtKErVt9OF_pfPGgs&libraries=places&callback=initMap"
+            async>
+            </script>
+    </div>
+    <div class="map-container">
+        <div id="info-window"></div>
+        <div class="gallery"></div>
+        <div class="opening-hours"></div>
+        <div class="price"></div>
+        <div class="rating"></div>
+        <div class="vicinity"></div>
+    </div>
+    <br><br>
+    <div class="map-container" style="overflow-y: scroll;">
+        <div class="reviews"></div>
+    </div>
+
+</body>
+
+</html>

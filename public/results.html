@@ -5,25 +5,23 @@
     <title>Result Page</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
         integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
-        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
         crossorigin="anonymous"></script>
-
-    <script src="scripts/search.js"></script>
-    <script src="scripts/results.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAi2P_fe95Y9Ee4FvXtKErVt9OF_pfPGgs&callback=initMap"
-        async>
-        </script>
-
-   <script src="https://kit.fontawesome.com/6edc20d617.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="css/results.css">
     <link rel="stylesheet" type="text/css" href="css/cards.css">
+
+
+    <script src="scripts/autocomplete.js"></script>
+    <script src="scripts/resultsV2.js"></script>
+    <script src="scripts/search.js"></script>
+    <script src="scripts/generateSliders.js"></script>
 </head>
 
 <body>
@@ -31,45 +29,27 @@
         <li><a href="index.html">Restaurant Random</a></li>
         <li class="right"><a href="create_profile.html">Create Account</a></li>
         <li class="right"><a href="login.html"> Log in</a></li>
-      </ul>
-<br>
-<br>
+    </ul>
+    <br>
+    <br>
     <!-- Map -->
     <div class="container map-container">
-        <div id="map">
-
-        </div>
+        <div id="map"></div>
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAi2P_fe95Y9Ee4FvXtKErVt9OF_pfPGgs&libraries=places&callback=initMap"
+            async>
+            </script>
     </div>
     <br>
 
     <div class="container show form">
         <form id="search">
             <label for="form-search">Zip Code</label>
-            <input type="text" id="zipcode" placeholder="zipcode">
+            <input type="text" id="zipcode2" placeholder="zipcode" required>
             <label for="form-search">Cuisine</label>
-          <!---  <input type="text" id="cuisine" placeholder="type of food"> --->
-          <select id="cuisine" name="cuisine">
-              <option value="French">French</option>
-              <option value="Chinese">Chinese</option>
-              <option value="Japanese">Japanese</option>
-              <option value="Italian">Italian</option>French</option>
-              <option value="Greek">Greek</option>French</option>
-              <option value="Spanish">Spanish</option>
-              <option value="Mediterranean">Mediterranean</option>
-              <option value="Lebanese">Lebanese</option>
-              <option value="Moroccan">Moroccan</option>
-              <option value="Turkish">Turkish</option>
-              <option value="Thai">Thai</option>
-              <option value="Indian">Indian</option>
-              <option value="Korean">Korean</option>
-              <option value="Cajun">Cajun</option>
-              <option value="American">American</option>
-              <option value="Mexican">Mexican</option>
-              <option value="Caribbean">Caribbean</option>
-              <option value="German">German</option>
-              <option value="Russian">Russian</option>
-              <option value="Hungarian">Hungarian</option>
-          </select>
+            <input type="text" id="cuisine" placeholder="type of food" required>
+            <label for="form-search">Radius</label>
+            <input type="number" id="radius" placeholder="distance">
             <br><br>
             <input type="submit" value="Find Restaurant">
             <script src="scripts/search.js"></script>
@@ -84,238 +64,7 @@
         <section style="visibility: visible;">
            
             <div class="swiper mySwiper container">
-                <div class="swiper-wrapper content">
-                    <div class="swiper-slide card">
-                        <div class="card-content" id="card-0">
-                            <div class="image">
-                                <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHx8&w=1000&q=80"
-                                    alt="">
-                           
-                            </div>
-
-                            <div class="name-profession">
-                                <span class="name"></span>
-                                <span class="address"></span>
-                            </div>
-
-                            <div class="rating" id="rating-0">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-
-                            <div class="btns">
-                                
-                                <Button onclick="Toggle1()" id="btnh1" class="btn"><i class="fa-regular fa-thumbs-up"></i></Button>
-                                <Button onclick="Toggle2()" id="btnh2" class="btn"><i class="fa-regular fa-thumbs-down"></i></Button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide card">
-                        <div class="card-content" id="card-1">
-                            <div class="image">
-                                <img src="" alt="">
-                            </div>
-
-                            <div class="name-profession">
-                                <span class="name"></span>
-                                <span class="address"></span>
-                            </div>
-
-                            <div class="rating" id="rating-1">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-
-                            <div class="btns">
-                                <Button onclick="Toggle1()" id="btnh1" class="btn"><i class="fa-regular fa-thumbs-up"></i></Button>
-                                <Button onclick="Toggle2()" id="btnh2" class="btn"><i class="fa-regular fa-thumbs-down"></i></Button>
-                               
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide card">
-                        <div class="card-content" id="card-2">
-                            <div class="image">
-                                <img src="" alt="">
-                            </div>
-
-                            <div class="name-profession">
-                                <span class="name"></span>
-                                <span class="address"></span>
-                            </div>
-
-                            <div class="rating" id="rating-2">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-
-                            <div class="btns">
-                                <Button onclick="Toggle1()" id="btnh1" class="btn"><i class="fa-regular fa-thumbs-up"></i></Button>
-                                <Button onclick="Toggle2()" id="btnh2" class="btn"><i class="fa-regular fa-thumbs-down"></i></Button>
-                               
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide card">
-                        <div class="card-content" id="card-3">
-                            <div class="image">
-                                <img src="" alt="">
-                            </div>
-
-                            <div class="name-profession">
-                                <span class="name"></span>
-                                <span class="address"></span>
-                            </div>
-
-                            <div class="rating" id="rating-3">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-
-                            <div class="btns">
-                                <Button onclick="Toggle1()" id="btnh1" class="btn"><i class="fa-regular fa-thumbs-up"></i></Button>
-                                <Button onclick="Toggle2()" id="btnh2" class="btn"><i class="fa-regular fa-thumbs-down"></i></Button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide card">
-                        <div class="card-content" id="card-4">
-                            <div class="image">
-                                <img src="" alt="">
-                            </div>
-
-                            <div class="name-profession">
-                                <span class="name"></span>
-                                <span class="address"></span>
-                            </div>
-
-                            <div class="rating" id="rating-4">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-
-                            <div class="btns">
-                                <Button onclick="Toggle1()" id="btnh1" class="btn"><i class="fa-regular fa-thumbs-up"></i></i></Button>
-                                <Button onclick="Toggle2()" id="btnh2" class="btn"><i class="fa-regular fa-thumbs-down"></i></i></Button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide card">
-                        <div class="card-content" id="card-5">
-                            <div class="image">
-                                <img src="" alt="">
-                            </div>
-
-                            <div class="name-profession">
-                                <span class="name"></span>
-                                <span class="address"></span>
-                            </div>
-
-                            <div class="rating" id="rating-5">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-
-                            <div class="btns">
-                                <Button onclick="Toggle1()" id="btnh1" class="btn"><i class="fa-regular fa-thumbs-up"></i></i></Button>
-                                <Button onclick="Toggle2()" id="btnh2" class="btn"><i class="fa-regular fa-thumbs-down"></i></i></Button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide card">
-                        <div class="card-content" id="card-6">
-                            <div class="image">
-                                <img src="" alt="">
-                            </div>
-
-                            <div class="name-profession">
-                                <span class="name"></span>
-                                <span class="address"></span>
-                            </div>
-
-                            <div class="rating" id="rating-6">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-
-                            <div class="btns">
-                                <Button onclick="Toggle1()" id="btnh1" class="btn"><i class="fa-regular fa-thumbs-up"></i></i></Button>
-                                <Button onclick="Toggle1()" id="btnh2" class="btn"><i class="fa-regular fa-thumbs-down"></i></i></Button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide card">
-                        <div class="card-content" id="card-7">
-                            <div class="image">
-                                <img src="" alt="">
-                            </div>
-
-                            <div class="name-profession">
-                                <span class="name"></span>
-                                <span class="address"></span>
-                            </div>
-
-                            <div class="rating" id="rating-7">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-
-                            <div class="btns">
-                                <Button onclick="Toggle1()" id="btnh1" class="btn"><i class="fa-regular fa-thumbs-up"></i></i></Button>
-                                <Button onclick="Toggle2()" id="btnh2" class="btn"><i class="fa-regular fa-thumbs-down"></i></i></Button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide card">
-                        <div class="card-content" id="card-8">
-                            <div class="image">
-                                <img src="" alt="">
-                            </div>
-
-                            <div class="name-profession">
-                                <span class="name"></span>
-                                <span class="address"></span>
-                            </div>
-
-                            <div class="rating" id="rating-8">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-
-                            <div class="btns">
-                                <Button onclick="Toggle1()" id="btnh1" class="btn"><i class="fa-regular fa-thumbs-up"></i></i></Button>
-                                <Button onclick="Toggle2()" id="btnh2" class="btn"><i class="fa-regular fa-thumbs-down"></i></i></Button>
-                            </div>
-                        </div>
-                    </div>
-
+                <div class="swiper-wrapper content" id="swiper-container">
                 </div>
             </div>
 
@@ -367,11 +116,8 @@
                 },
             });
         </script>
+    </div>
 
-        <script src="https://unpkg.com/axios/dist/axios.min.js" aysnc></script>
-        <!-- <script src="scripts/search.js"></script> -->
-
-    
 </body>
 
 </html>

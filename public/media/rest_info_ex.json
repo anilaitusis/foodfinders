@@ -1,0 +1,356 @@
+{
+    "address_components": [
+        {
+            "long_name": "305",
+            "short_name": "305",
+            "types": [
+                "street_number"
+            ]
+        },
+        {
+            "long_name": "East Holt Avenue",
+            "short_name": "E Holt Ave",
+            "types": [
+                "route"
+            ]
+        },
+        {
+            "long_name": "Pomona",
+            "short_name": "Pomona",
+            "types": [
+                "locality",
+                "political"
+            ]
+        },
+        {
+            "long_name": "Los Angeles County",
+            "short_name": "Los Angeles County",
+            "types": [
+                "administrative_area_level_2",
+                "political"
+            ]
+        },
+        {
+            "long_name": "California",
+            "short_name": "CA",
+            "types": [
+                "administrative_area_level_1",
+                "political"
+            ]
+        },
+        {
+            "long_name": "United States",
+            "short_name": "US",
+            "types": [
+                "country",
+                "political"
+            ]
+        },
+        {
+            "long_name": "91766",
+            "short_name": "91766",
+            "types": [
+                "postal_code"
+            ]
+        },
+        {
+            "long_name": "5537",
+            "short_name": "5537",
+            "types": [
+                "postal_code_suffix"
+            ]
+        }
+    ],
+    "adr_address": "<span class=\"street-address\">305 E Holt Ave</span>, <span class=\"locality\">Pomona</span>, <span class=\"region\">CA</span> <span class=\"postal-code\">91766-5537</span>, <span class=\"country-name\">USA</span>",
+    "business_status": "OPERATIONAL",
+    "formatted_address": "305 E Holt Ave, Pomona, CA 91766, USA",
+    "formatted_phone_number": "(909) 622-0300",
+    "geometry": {
+        "location": {
+            "lat": 34.0629311,
+            "lng": -117.7456512
+        },
+        "viewport": {
+            "south": 34.06157591970849,
+            "west": -117.7471600302915,
+            "north": 34.06427388029149,
+            "east": -117.7444620697085
+        }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "icon_background_color": "#FF9E67",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+    "international_phone_number": "+1 909-622-0300",
+    "name": "Cachanilla Chinese Restaurant",
+    "opening_hours": {
+        "open_now": false,
+        "periods": [
+            {
+                "close": {
+                    "day": 0,
+                    "time": "2100",
+                    "hours": 21,
+                    "minutes": 0,
+                    "nextDate": 1652068800000
+                },
+                "open": {
+                    "day": 0,
+                    "time": "1100",
+                    "hours": 11,
+                    "minutes": 0,
+                    "nextDate": 1652032800000
+                }
+            },
+            {
+                "close": {
+                    "day": 1,
+                    "time": "2100",
+                    "hours": 21,
+                    "minutes": 0,
+                    "nextDate": 1652155200000
+                },
+                "open": {
+                    "day": 1,
+                    "time": "1100",
+                    "hours": 11,
+                    "minutes": 0,
+                    "nextDate": 1652119200000
+                }
+            },
+            {
+                "close": {
+                    "day": 2,
+                    "time": "2100",
+                    "hours": 21,
+                    "minutes": 0,
+                    "nextDate": 1652241600000
+                },
+                "open": {
+                    "day": 2,
+                    "time": "1100",
+                    "hours": 11,
+                    "minutes": 0,
+                    "nextDate": 1652205600000
+                }
+            },
+            {
+                "close": {
+                    "day": 3,
+                    "time": "2100",
+                    "hours": 21,
+                    "minutes": 0,
+                    "nextDate": 1651723200000
+                },
+                "open": {
+                    "day": 3,
+                    "time": "1100",
+                    "hours": 11,
+                    "minutes": 0,
+                    "nextDate": 1651687200000
+                }
+            },
+            {
+                "close": {
+                    "day": 4,
+                    "time": "2100",
+                    "hours": 21,
+                    "minutes": 0,
+                    "nextDate": 1651809600000
+                },
+                "open": {
+                    "day": 4,
+                    "time": "1100",
+                    "hours": 11,
+                    "minutes": 0,
+                    "nextDate": 1651773600000
+                }
+            },
+            {
+                "close": {
+                    "day": 5,
+                    "time": "2100",
+                    "hours": 21,
+                    "minutes": 0,
+                    "nextDate": 1651896000000
+                },
+                "open": {
+                    "day": 5,
+                    "time": "1100",
+                    "hours": 11,
+                    "minutes": 0,
+                    "nextDate": 1651860000000
+                }
+            },
+            {
+                "close": {
+                    "day": 6,
+                    "time": "2100",
+                    "hours": 21,
+                    "minutes": 0,
+                    "nextDate": 1651982400000
+                },
+                "open": {
+                    "day": 6,
+                    "time": "1100",
+                    "hours": 11,
+                    "minutes": 0,
+                    "nextDate": 1651946400000
+                }
+            }
+        ],
+        "weekday_text": [
+            "Monday: 11:00 AM – 9:00 PM",
+            "Tuesday: 11:00 AM – 9:00 PM",
+            "Wednesday: 11:00 AM – 9:00 PM",
+            "Thursday: 11:00 AM – 9:00 PM",
+            "Friday: 11:00 AM – 9:00 PM",
+            "Saturday: 11:00 AM – 9:00 PM",
+            "Sunday: 11:00 AM – 9:00 PM"
+        ]
+    },
+    "photos": [
+        {
+            "height": 2590,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/105434259099682769454\">Cachanilla Chinese Restaurant</a>"
+            ],
+            "width": 3892
+        },
+        {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/113740482116522243056\">Meimei Chen</a>"
+            ],
+            "width": 4032
+        },
+        {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/116606186864481478290\">Kevin Li</a>"
+            ],
+            "width": 4032
+        },
+        {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/112600747635552835211\">zumotoJon</a>"
+            ],
+            "width": 4032
+        },
+        {
+            "height": 3024,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/113740482116522243056\">Meimei Chen</a>"
+            ],
+            "width": 4032
+        },
+        {
+            "height": 3468,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/105145390381943722381\">Edgar Urena</a>"
+            ],
+            "width": 4624
+        },
+        {
+            "height": 4032,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/117297757883561842510\">Mercedes Ram</a>"
+            ],
+            "width": 3024
+        },
+        {
+            "height": 3000,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/102365620845590171195\">Cliford Rojas</a>"
+            ],
+            "width": 4000
+        },
+        {
+            "height": 2136,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/107927804426174259897\">Chellie F</a>"
+            ],
+            "width": 2848
+        },
+        {
+            "height": 4000,
+            "html_attributions": [
+                "<a href=\"https://maps.google.com/maps/contrib/109426315164486290657\">Nicole Finocchio</a>"
+            ],
+            "width": 3000
+        }
+    ],
+    "place_id": "ChIJi9XFe_wtw4ARMAal0S2kbu4",
+    "plus_code": {
+        "compound_code": "3773+5P Pomona, CA, USA",
+        "global_code": "85643773+5P"
+    },
+    "price_level": 2,
+    "rating": 4.5,
+    "reference": "ChIJi9XFe_wtw4ARMAal0S2kbu4",
+    "reviews": [
+        {
+            "author_name": "Georgina “Gigi” Penalosa",
+            "author_url": "https://www.google.com/maps/contrib/105161192760778055910/reviews",
+            "language": "en",
+            "profile_photo_url": "https://lh3.googleusercontent.com/a-/AOh14GhCM5g3JHkSHW7QE6NbxbZvfIrluuFGwvpCK34d9w=s128-c0x00000000-cc-rp-mo-ba3",
+            "rating": 4,
+            "relative_time_description": "3 months ago",
+            "text": "This place claims to do Chinese food Mexicali style and since I've had Chinese food in Mexicali I thought I would be able to give an honest review.\nThe food was super good! Delicious & flavorful! Fresh & good portion sizes. We ordered for the 1st time on NYE '21, so customer service was a bit hectic but we will definitely order from here again!\n*Update 1/22-this place is our go-to!! Really great food!! I usually get food to go but the interior is nice & clean and the staff is very friendly and helpful.",
+            "time": 1643394282
+        },
+        {
+            "author_name": "Natalie Estrada",
+            "author_url": "https://www.google.com/maps/contrib/111305581178887752487/reviews",
+            "language": "en",
+            "profile_photo_url": "https://lh3.googleusercontent.com/a-/AOh14GjCW_rB1_udShCoiS8nBOP__P3ZsakLvJqOAEJXTw=s128-c0x00000000-cc-rp-mo-ba4",
+            "rating": 5,
+            "relative_time_description": "a week ago",
+            "text": "Omg I love the soup here.  The other dishes are all good. Taste fresh and delicious. The chicken and vegetables soup here will make you feel better if you're cold, sick, depressed, etc.  My favorite drink is the honey ice tea. This is the best Chinese food I've ever had in L A County!",
+            "time": 1650542165
+        },
+        {
+            "author_name": "junex B",
+            "author_url": "https://www.google.com/maps/contrib/116044776293053720836/reviews",
+            "language": "en",
+            "profile_photo_url": "https://lh3.googleusercontent.com/a-/AOh14GjCAXXdMsDVhoHW1l8q3zoFRteh81gULflV_85Elw=s128-c0x00000000-cc-rp-mo-ba4",
+            "rating": 4,
+            "relative_time_description": "a week ago",
+            "text": "Took about 10 mins for us to order and get our drinks ( non alcoholic). The beef and Broccoli was 5/5. The orange chicken was my least favorite. Rice was cooked well. Great for big parties. They had several parties, and customers coming in for to-go orders. I think the service was pretty quick for the amount of people they had.",
+            "time": 1650953415
+        },
+        {
+            "author_name": "R.A. Grimes",
+            "author_url": "https://www.google.com/maps/contrib/107882338272962327477/reviews",
+            "language": "en",
+            "profile_photo_url": "https://lh3.googleusercontent.com/a-/AOh14GguFJnl_8uP2vwH2g_eDqi6ZWRe7G-ERaWl0xJ_5A=s128-c0x00000000-cc-rp-mo-ba5",
+            "rating": 4,
+            "relative_time_description": "2 months ago",
+            "text": "Pretty good! Huge portions! Able to facilitate big groups. Very fast. Some recommendations are the pepper steak and chop suey",
+            "time": 1644377821
+        },
+        {
+            "author_name": "Dr. Regena Brooks",
+            "author_url": "https://www.google.com/maps/contrib/114064223377339111726/reviews",
+            "language": "en",
+            "profile_photo_url": "https://lh3.googleusercontent.com/a-/AOh14Gh2lu0qhzAmvw_BqxuiIvc4fhR9qdEZStPMM7eM=s128-c0x00000000-cc-rp-mo",
+            "rating": 4,
+            "relative_time_description": "8 months ago",
+            "text": "1st time there. I ordered Black Pepper Filet Mignon. Over-dose of Black Pepper! Surprisingly, not served over rice; of any kind. I had to ask them to tone down the black pepper so I could taste the meat! They did, which made it enjoyable to eat",
+            "time": 1630786143
+        }
+    ],
+    "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+    ],
+    "url": "https://maps.google.com/?cid=17180850145162757680",
+    "user_ratings_total": 1018,
+    "utc_offset": -420,
+    "vicinity": "305 East Holt Avenue, Pomona",
+    "website": "https://www.cachanillarestaurant.com/menu",
+    "html_attributions": [],
+    "utc_offset_minutes": -420
+}
