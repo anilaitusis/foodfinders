@@ -1,5 +1,5 @@
 {
-    "require-dev": {
+    "require": {
         "heroku/heroku-buildpack-php": "^216.0"
     }
 }
