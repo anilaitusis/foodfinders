@@ -34,7 +34,7 @@ function userSearch() {
     else {
         console.log('User is not logged in')
         cookieExists()
-        // getLocation()    //Remove Comment
+        getLocation()    //Remove Comment
     }
 }
 
