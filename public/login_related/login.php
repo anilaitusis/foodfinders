@@ -20,13 +20,20 @@ if($result) {
             setcookie("user_id",$user_id,time() + 60*60);   //sets $user_id and $c_username as cookies
             if($c_password == $cust_password){  //checks if the password they entered matches the one in the DB
             if(is_null($last_login)) {    //checks if user is active, if not requests their activation key
-                header("Location: https://the-food-engine.herokuapp.com/activate_user.html"); 
+                header("Location: http://obi.kean.edu/~veradan/CPS3962/activate_user.html"); 
                 exit;
             }
             setcookie("username",$c_username,time() + 60*60);
             include("update_last_login.php"); //updates the last_login in the User table
-            include("update_location.php"); //updates the user location cookies        
-            header("Location: https://the-food-engine.herokuapp.com/user_home.php"); //brings user to user_home.php once logged in, can bring them to an HTML page if better option
+            $sql_online = "UPDATE 2022S_CPS3961_01.Users
+                SET is_online = 1
+                where user_id = $user_id";
+                $result_online = mysqli_query($con, $sql_online);
+            if(!$result_online){ 
+                echo "<br>Something wrong with sql_update. " . mysqli_error($con);
+            }    
+            //include("update_location.php"); //updates the user location cookies        
+            header("Location: http://obi.kean.edu/~veradan/CPS3962/user_home.php"); //brings user to user_home.php once logged in, can bring them to an HTML page if better option
             exit;
         }
             else {
