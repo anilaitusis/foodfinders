@@ -30,17 +30,17 @@ else {
 $pass_success = '';
 if($old_password != $pass) {
     $pass_success = "invalid";
-    header("Location: http://obi.kean.edu/~veradan/CPS3962/edit_preferences.php?pass_success=".$pass_success);
+    header("Location: https://the-food-engine.herokuapp.com/edit_preferences.php?pass_success=".$pass_success);
     exit();
 }
 elseif($new_password == $old_password) {
     $pass_success = "not_new";
-    header("Location: http://obi.kean.edu/~veradan/CPS3962/edit_preferences.php?pass_success=".$pass_success);
+    header("Location: https://the-food-engine.herokuapp.com/edit_preferences.php?pass_success=".$pass_success);
     exit();
 }
 elseif($new_password != $re_password) {
     $pass_success = "mismatch";
-    header("Location: http://obi.kean.edu/~veradan/CPS3962/edit_preferences.php?pass_success=".$pass_success);
+    header("Location: https://the-food-engine.herokuapp.com/edit_preferences.php?pass_success=".$pass_success);
     exit(); 
 }
 else {
@@ -53,7 +53,7 @@ else {
     }
     else {
         $pass_success = "success";
-        header("Location: http://obi.kean.edu/~veradan/CPS3962/edit_preferences.php?pass_success=".$pass_success);
+        header("Location: https://the-food-engine.herokuapp.com/edit_preferences.php?pass_success=".$pass_success);
         exit(); 
     }
 }
