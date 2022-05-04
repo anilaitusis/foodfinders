@@ -1,20 +1,24 @@
-function addCard(container_class, i) {
-    let card = $("<div>", { "class": "swiper-slide card" })
+function addCard(container_class, i, id) {
+    let card = $("<div>", { "class": "swiper-slide card"})
     let content = $("<div>", { "id": "card-" + i, "class": "card-content" })
     let img_container = $("<div>", { "class": "image" })
     let img = $("<img>", { "src": "" })
-    let info = $("<div>", { "class": "name-profession" })
+    let info = $("<div>", { "class": "name-profession", "onclick": "redirectInfo(\'" + id + "\')" })
     let name = $("<div>", { "class": "name" })
     let address = $("<div>", { "class": "address" })
     let rating = $("<div>", { "id": "rating-" + i, "class": "rating" })
-    let star = $("<div>", { "class": "fas fa-star" })
+    // let star = 
     let vote = $("<div>", { "class": "vote" })
     let thumbs_up = $("<button>", {"onclick": "toggleYes()", "id": "upvote-" + i})
     let up_icon = $("<i>", {"class":"fa-regular fa-thumbs-up"})
     let thumbs_down = $("<button>", {"onclick": "toggleNo()", "id": "downvote-" + i,})
     let down_icon = $("<i>", {"class":"fa-regular fa-thumbs-down"})
 
-    rating.append(star)
+    rating.append($("<div>", { "class": "fas fa-star" }))
+    rating.append($("<div>", { "class": "fas fa-star" }))
+    rating.append($("<div>", { "class": "fas fa-star" }))
+    rating.append($("<div>", { "class": "fas fa-star" }))
+    rating.append($("<div>", { "class": "fas fa-star" }))
     info.append(name)
     info.append(address)
     img_container.append(img)
@@ -36,12 +40,9 @@ function fillSliders(results, container) {
     var iters = results.length
 
     // TODO: Change based on search results
-    // if (results.length > 9) {
-    //     iters = results
-    // }
 
     for (let i = 0; i < iters; i++) {
-        addCard(container, i)
+        addCard(container, i, results[i].place_id)
 
         if (results[i].photos) {
             var src = results[i].photos[0].getUrl()
@@ -70,4 +71,9 @@ function fillSliders(results, container) {
             }
         }
     }
+}
+
+function redirectInfo(id) {
+    storeResultsLocally(query, id, false)
+    window.location = `infopage.html?id=${id}`;
 }

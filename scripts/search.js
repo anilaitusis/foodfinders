@@ -1,33 +1,35 @@
 var form = document.getElementById("search")
-// var urlParameters = new URLSearchParams(window.location.search);
+var rand_form = document.getElementById("random")
 
-if(form){
-    form.addEventListener("submit", function(e){
-        localStorage.clear()
+if (form) {
+    form.addEventListener("submit", function (e) {
 
         var cuisine = document.getElementById("cuisine").value.replaceAll(" ", "+")
-        var zipcode = document.getElementById("zipcode2").value
-        var query = {
-            "cuisine": cuisine,
-            "zipcode": zipcode
-        }
-        
+        var zipcode = document.getElementById("zipcode2").value.replaceAll(", ", "+")
+
         e.preventDefault();
 
-        console.log(query)
-
-        // url.searchParams.append()
-
-
-        localStorage.setItem("query", JSON.stringify(query))
-
-        // alert("change")
+        // console.log(query)
 
         window.location = `results.html?query=${cuisine}&zipcode=${zipcode}`;
     })
 }
 
-// function searchRestaurant() {
-    
+if (rand_form) {
+    var foods = ["French", "Chinese", "Japanese", "Italian", "Greek", "Spanish",
+        "Mediterranean", "Lebanese", "Moroccan", "Turkish", "Thai", "Indian",
+        "Korean", "Cajun", "American", "Mexican", "Caribbean", "German", "Russian",
+        "Hungarian"]
 
-// }
+    rand_form.addEventListener("submit", function (e) {
+        var cuisine = foods[Math.floor(Math.random() * foods.length)]
+        console.log(cuisine)
+        var zipcode = document.getElementById("zipcode").value.replaceAll(", ", "+")
+
+        e.preventDefault();
+
+        // console.log(query)
+
+        window.location = `results.html?query=${cuisine}&zipcode=${zipcode}`;
+    })
+}

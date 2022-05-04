@@ -6,7 +6,8 @@ var map;
 var geocoder;
 var infowindow;
 var service;
-var searchresults
+var address
+var all_results
 
 function initMap() {
     let mapOptions = {
@@ -19,12 +20,14 @@ function initMap() {
     infowindow = new google.maps.InfoWindow();
 
     // TODO: Remove Geocoder and replace with localStorage
+    initAutoComplete("#zipcode2")
     codeAddress(zipcode)
 }
 
 function codeAddress(address) {
     geocoder.geocode({ 'address': address }, function (results, status) {
         if (status == 'OK') {
+            address = results
             map.setCenter(results[0].geometry.location);
             search_coord = results[0].geometry.location
             nearbySearch(search_coord)
@@ -46,12 +49,12 @@ function nearbySearch(latlng) {
     service.nearbySearch(request, callback)
     console.log("completed")
 
-    $("#zipcode2").val(zipcode)
+    $("#zipcode2").val(zipcode.replaceAll("+", ", "))
     $("#cuisine").val(query.replaceAll("+", " "))
 }
 
 function callback(results, status, pagination) {
-    searchresults = results
+    all_results = results
     console.log(status)
     // If there are search results
     if (status === google.maps.places.PlacesServiceStatus.OK && results) {

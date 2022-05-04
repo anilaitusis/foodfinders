@@ -5,7 +5,8 @@ var isLoggedIn = false;
 var coords
 var map
 var service
-var results
+var all_results
+var same_coords
 
 // Step 1. Get user location 
 // Step 2. API call for best rated restaurants in that area --> "best restaurants in my area"
@@ -18,6 +19,8 @@ function initMap() {
         zoom: 12
     }
     map = new google.maps.Map(document.getElementById("map"), mapOptions)
+    initAutoComplete("#zipcode")
+    initAutoComplete("#zipcode2")
     userSearch()
 }
 
@@ -30,15 +33,14 @@ function userSearch() {
     }
     else {
         console.log('User is not logged in')
-        getLocation()
+        cookieExists()
+        // getLocation()    //Remove Comment
     }
 }
 
 
 // Step 1. Get user location
 function getLocation() {
-
-    // if (navigator.geolocation && cookieExists("lat-lng")) {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(setGeoCookie, showError);
     } else {
@@ -48,28 +50,44 @@ function getLocation() {
 }
 
 function setGeoCookie(position) {
-    var cookie_val = position.coords.latitude + "|" + position.coords.longitude;
+    const cookie_val = position.coords.latitude + "|" + position.coords.longitude;
+    console.log(cookie_val)
+    // If cookie exists, check if the same
+    // if (getCookie("lat_lng") === cookie_val && existsInStorage("best")) {
+    //     console.log("User is in the same location")
+    //     all_results = loadLastResults("best", true)
+    //     fillSliders(all_results, "#recommended")
+    // }
+    // else {
     const d = new Date();
-
-    // Set cookie to expire after a week
     d.setTime(d.getTime() + (7 * 24 * 60 * 60 * 1000));
 
+    // Set cookie to expire after a week
     let expires = "expires=" + d.toUTCString();
     document.cookie = "lat_lng=" + cookie_val + ";" + expires;
-    showPosition(position)
+
     searchBestInArea(position)
+
+
+    showPosition(position)
 }
 
 function showPosition(position) {
     console.log(position.coords.latitude, position.coords.longitude)
 }
 
+function getCookie(name) {
+    const value = `; ${document.cookie}`
+    const parts = value.split(`; ${name}=`)
+    if (parts.length === 2) return parts.pop().split(';').shift()
+}
 // TODO: Determine if needed
-// Check if a cookie with that name exists
-function cookieExists(name){
+// Check if a cookie with that name exists and 
+// if do reload best in your area json
+function cookieExists(name) {
     let cookies = document.cookie.split(';')
-    for(var c in cookies) {
-        if(name === c.split("=")[0]) {
+    for (var c in cookies) {
+        if (name === c.split("=")[0]) {
             return true;
         }
     }
@@ -99,21 +117,20 @@ function searchBestInArea(position) {
 
     let service = new google.maps.places.PlacesService(map);
     let request = {
-        location: {lat: position.coords.latitude, lng: position.coords.longitude},
+        location: { lat: position.coords.latitude, lng: position.coords.longitude },
         radius: '8000',
         keyword: query,
         type: ['restaurant'],
         rankby: google.maps.places.RankBy.PROMINENCE
     }
-    // console.log("here")
     service.nearbySearch(request, callback)
-    // console.log("here")
 }
 
 function callback(results, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK && results) {
-        results = results
-        fillSliders(results, "#recommended") 
+        all_results = results
+        fillSliders(results, "#recommended")
+        // storeResultsLocally("best", results, true)
     }
     // If there are no search results
     // TODO: Add Results not found page
