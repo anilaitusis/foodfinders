@@ -1,0 +1,23 @@
+{
+  "name": "the-food-engine",
+  "version": "1.0.0",
+  "description": "Food Recommendation System using Google Maps API",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.26.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dacayant/OOAD3962-Group-Project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dacayant/OOAD3962-Group-Project/issues"
+  },
+  "homepage": "https://github.com/dacayant/OOAD3962-Group-Project#readme"
+}
