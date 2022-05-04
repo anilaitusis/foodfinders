@@ -1,9 +1,9 @@
-function addCard(container_class, i, id) {
+function addCard(container_class, i, id, query) {
     let card = $("<div>", { "class": "swiper-slide card"})
     let content = $("<div>", { "id": "card-" + i, "class": "card-content" })
     let img_container = $("<div>", { "class": "image" })
     let img = $("<img>", { "src": "" })
-    let info = $("<div>", { "class": "name-profession", "onclick": "redirectInfo(\'" + id + "\')" })
+    let info = $("<div>", { "class": "name-profession", "onclick": "redirectInfo(\'" + id + "\', \'"+ query +"\')" })
     let name = $("<div>", { "class": "name" })
     let address = $("<div>", { "class": "address" })
     let rating = $("<div>", { "id": "rating-" + i, "class": "rating" })
@@ -36,13 +36,13 @@ function addCard(container_class, i, id) {
     $(container_class).append(card)
 }
 
-function fillSliders(results, container) {
+function fillSliders(results, container, query) {
     var iters = results.length
 
     // TODO: Change based on search results
 
     for (let i = 0; i < iters; i++) {
-        addCard(container, i, results[i].place_id)
+        addCard(container, i, results[i].place_id, query)
 
         if (results[i].photos) {
             var src = results[i].photos[0].getUrl()
@@ -73,7 +73,8 @@ function fillSliders(results, container) {
     }
 }
 
-function redirectInfo(id) {
-    // storeResultsLocally(query, id, false)
+function redirectInfo(id, query) {
+    // alert(id + ": " + query)
+    storeResultsLocally(id, query)
     window.location = `infopage.html?id=${id}`;
 }

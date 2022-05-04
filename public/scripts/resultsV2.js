@@ -1,5 +1,6 @@
 var params = window.location.search.split("&")
-var query = params[0].split("=")[1]
+var query = params[0].split("=")[1].toLowerCase()
+query = query.charAt(0).toUpperCase() + query.slice(1)
 var zipcode = params[1].split("=")[1]
 
 var map;
@@ -59,7 +60,7 @@ function callback(results, status, pagination) {
     // If there are search results
     if (status === google.maps.places.PlacesServiceStatus.OK && results) {
         console.log(results)
-        fillSliders(results, "#swiper-container")
+        fillSliders(results, "#swiper-container", query)
         // Create Markers
         for (let i = 0; i < results.length; i++) {
             createMarker(results[i], i);

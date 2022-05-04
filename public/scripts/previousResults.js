@@ -1,18 +1,22 @@
 var local_history
 
 function updateHistory(name) {
-    if (localStorage.getItem("history") === null || !JSON.parse(localStorage.getItem("history")).length) {
-        localStorage.setItem("history", "[]")
+    if (getCookie("history") === null || getCookie("history") === undefined) {
+        document.cookie = "history=[]; expires=" + (new Date().getTime() + (7 * 24 * 60 * 60 * 1000)) + ";"
+    }
+    else if (!JSON.parse(getCookie("history")).length) {
+        document.cookie = "history=[]; expires=" + (new Date().getTime() + (7 * 24 * 60 * 60 * 1000)) + ";"
     }
 
-    // Parse History
-    local_history = JSON.parse(localStorage.getItem("history"))
+    // Parse History and store in object
+
+    local_history = JSON.parse(getCookie("history"))
 
     // Check if history length is longer than 10
     if (local_history.length > 10) {
         while (local_history.length > 10) {
             var deleted = local_history.shift()
-            localStorage.removeItem(deleted)
+            deleteCookie(deleted)
         }
     }
 
@@ -24,25 +28,49 @@ function updateHistory(name) {
     }
 
     local_history.push(name)
-    localStorage.setItem("history", JSON.stringify(local_history), 1)
-    console.log(localStorage)
+    document.cookie = "history=" + JSON.stringify(local_history) + ";" 
+                    + (new Date().getTime() + (7 * 24 * 60 * 60 * 1000)) + ";"
+    console.log(document.cookie)
 }
 
 function existsInStorage(name) {
-    return localStorage.getItem(name)
+    return getCookie(name)
 }
 
 function storeResultsLocally(name, results, isBest) {
     if (!isBest) {
         updateHistory(name)
     }
-    localStorage.setItem(name, JSON.stringify(results))
+    document.cookie = name + "=" + JSON.stringify(results) + ";"
+                    + (new Date().getTime() + (7 * 24 * 60 * 60 * 1000)) + ";"
+    
 }
 
-function loadLastResults(name, isBest) {
-    if (!isBest) {
-        updateHistory(name)
+function loadLastResults() {
+    return JSON.parse(getCookie("history"))
+}
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`
+    const parts = value.split(`; ${name}=`)
+    if (parts.length === 2) return parts.pop().split(';').shift()
+
+}
+
+function deleteCookie(name) {
+    document.cookie = name + "=;expires=" + new Date(0).toUTCString()
+    console.log(document.cookie)
+}
+
+// TODO: Determine if needed
+// Check if a cookie with that name exists and 
+// if do reload best in your area json
+function cookieExists(name) {
+    let cookies = document.cookie.split(';')
+    for (var c in cookies) {
+        if (name === c.split("=")[0]) {
+            return true;
+        }
     }
-    return JSON.parse(localStorage.getItem(name))
+    return false;
 }
-
