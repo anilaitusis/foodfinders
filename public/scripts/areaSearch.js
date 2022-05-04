@@ -67,8 +67,6 @@ function setGeoCookie(position) {
     document.cookie = "lat_lng=" + cookie_val + ";" + expires;
 
     searchBestInArea(position)
-
-
     showPosition(position)
 }
 
