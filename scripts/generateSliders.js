@@ -74,6 +74,6 @@ function fillSliders(results, container) {
 }
 
 function redirectInfo(id) {
-    storeResultsLocally(query, id, false)
+    // storeResultsLocally(query, id, false)
     window.location = `infopage.html?id=${id}`;
 }

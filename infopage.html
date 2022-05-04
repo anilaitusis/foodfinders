@@ -18,6 +18,11 @@
 </head>
 
 <body>
+    <ul class="topnav">
+        <li><a href="/homepage.html">Restaurant Randomizer</a></li>
+        <li class="right"><a href="create_profile.html">Create Account</a></li>
+        <li class="right"><a href="login.html"> Log in</a></li>
+    </ul>
     <div class="container map-container">
         <div id="map"></div>
         <script
@@ -25,7 +30,18 @@
             async>
             </script>
     </div>
-    <br>
+    <div class="map-container">
+        <div id="info-window"></div>
+        <div class="gallery"></div>
+        <div class="opening-hours"></div>
+        <div class="price"></div>
+        <div class="rating"></div>
+        <div class="vicinity"></div>
+    </div>
+    <br><br>
+    <div class="map-container" style="overflow-y: scroll;">
+        <div class="reviews"></div>
+    </div>
 
 </body>
 

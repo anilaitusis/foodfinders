@@ -4,8 +4,9 @@ var rand_form = document.getElementById("random")
 if (form) {
     form.addEventListener("submit", function (e) {
 
-        var cuisine = document.getElementById("cuisine").value.replaceAll(" ", "+")
-        var zipcode = document.getElementById("zipcode2").value.replaceAll(", ", "+")
+        let cuisine = document.getElementById("cuisine").value.replaceAll(" ", "+")
+        let zipcode = document.getElementById("zipcode2").value.replaceAll(", ", "+")
+        
 
         e.preventDefault();
 
