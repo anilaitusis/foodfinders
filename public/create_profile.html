@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Create Profile</title>
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+    <body>
+           <!----HEADER----->
+           <ul class="topnav">
+            <li><a href="index.html">Restaurant Random</a></li>
+            <li class="right"><a href="create_profile.html">Create Account</a></li>
+            <li class="right"><a href="login.html"> Log in</a></li>
+          </ul>
+
+        <h3>Create your profile </h3>
+        <div class="login"> 
+       <label> <p>Please register using your Kean email</p></label>
+        <form action="create_profile.php" method="post">
+      <label> First Name: <input type="text" name="fname" required="required"> <br>Last Name: <input type="text" name="lname" required="required"></label> 
+      <label>  <br>Date of Birth <input type="date" id="dob" name="dob"></label>
+        <br>
+        
+       <label2> <input type="radio" name="gender" value="male"> Male<br></label2>
+       <label2><input type="radio" name="gender" value="female"> Female<br></label2>
+       <label2> <input type="radio" name="gender" value="other"> Other</label2>
+       <label> <br>Email: <input type="text" name="email" required="required"></label>
+      <label> <br>Username: <input type="text" name="usrname" required="required"></label> 
+      <label>   <br>Password: <input type="password" name="password" required="required"></label> 
+      <label>  <br>Re-enter Password: <input type="password" name="re_password" required="required"></label> 
+        <input type="submit" value="Submit">
+
+
+    </body>
+</html>

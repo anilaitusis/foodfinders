@@ -1,0 +1,52 @@
+.show {
+    color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    border-radius: 10px;
+  
+
+
+}
+
+.map-container {
+    height: 30em;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
+}
+
+.result-container {
+    max-height: 30em;
+    overflow-y: hidden;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    border-radius: 10px;
+   
+}
+
+#map {
+    height: 100%;
+}
+
+.card-img-top {
+    content: url("https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807?k=20&m=1147544807&s=612x612&w=0&h=pBhz1dkwsCMq37Udtp9sfxbjaMl27JUapoyYpQm0anc=");
+    display: block;
+    max-height: inherit;
+    max-width: 20em;
+}
+
+.card-body > * {
+    color: black;
+}
+
+.btn{
+    background: transparent;
+    border: none;
+    margin: 2px;
+    font-size: 20px;
+    outline: none;
+    color: grey;
+}
+
+.btn i:hover{
+    cursor: pointer;
+}
