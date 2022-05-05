@@ -71,10 +71,12 @@ function setPlaceInfo(place) {
     $(".vicinity").html("<p>" + place.formatted_address+ "<p>")
 
     place.reviews.forEach((review) => {
-        $(".reviews").append("<h4>" + review.author_name + "<h4>")
-        $(".reviews").append("<h5>Rating: " + review.rating + "<h5>")
-        $(".reviews").append("<p>" + review.text + "<p>")
-        $(".reviews").append("<hr>")
+        let review_ = $("<div>", { "class": "review-card"})
+        $(review_).append("<h4>" + review.author_name + "<h4>")
+        $(review_).append("<h5>Rating: " + review.rating + "<h5>")
+        $(review_).append("<p>" + review.text + "<p>")
+        $(review_).append("<hr>")
+        $(".reviews").append(review_)
     })
 }
 
