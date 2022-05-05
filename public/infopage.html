@@ -10,38 +10,69 @@
 
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/infopage.css">
     <link rel="stylesheet" type="text/css" href="css/results.css">
 
     <script src="scripts/autocomplete.js"></script>
+    <script src="scripts/cookieFunctions.js"></script>
     <script src="scripts/restaurantInfo.js"></script>
     <script src="scripts/search.js"></script>
 </head>
 
 <body>
+    <header>
+        <a href="index.html"><img src="media/logo.png" alt="logo" class="logo"></a>
+        <div>
+            <a href="create_profile.html">Create Account</a>
+            <a href="login.html"> Log in</a>
+        </div>
+
+    </header>
+
     <ul class="topnav">
-        <li><a href="/homepage.html">Restaurant Randomizer</a></li>
-        <li class="right"><a href="create_profile.html">Create Account</a></li>
-        <li class="right"><a href="login.html"> Log in</a></li>
+
+        <li class="right"></li>
+        <li class="right"></li>
     </ul>
-    <div class="container map-container">
-        <div id="map"></div>
-        <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAi2P_fe95Y9Ee4FvXtKErVt9OF_pfPGgs&libraries=places&callback=initMap"
-            async>
-            </script>
+
+    <div class="container splash">
+        <div>
+            <div id="info-window">
+                <h1>Name</h1>
+            </div>
+            <div class="vicinity">Address</div>
+            <div class="price"></div>
+            <div class="rating">Rating</div>
+        </div>
     </div>
-    <div class="map-container">
-        <div id="info-window"></div>
-        <div class="gallery"></div>
-        <div class="opening-hours"></div>
-        <div class="price"></div>
-        <div class="rating"></div>
-        <div class="vicinity"></div>
+    <br>
+
+    <div class="container info">
+        <div class="info-content">
+            <div class="interactables">
+                <button id="#share">Share</button>
+                <button id="#save">Save</button>
+                <button id="#like">Like</button>
+                <button id="#dislike">Dislike</button>
+            </div>
+            <div style="display: flex; flex-direction: row; flex: 6">
+                <div class="gallery"> Gallery </div>
+                <div class="opening-hours">Opening Hours</div>
+            </div>
+            <br><br>
+            <div class="container" style="overflow-y: scroll;">
+                <h3 style="padding: 0">Reviews</h3>
+                <div class="reviews"></div>
+            </div>
+        </div>
+        <div class="container map-container">
+            <div id="map"></div>
+            <script
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAi2P_fe95Y9Ee4FvXtKErVt9OF_pfPGgs&libraries=places&callback=initMap"
+                async></script>
+        </div>
     </div>
-    <br><br>
-    <div class="map-container" style="overflow-y: scroll;">
-        <div class="reviews"></div>
-    </div>
+
 
 </body>
 

@@ -1,0 +1,81 @@
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: whitesmoke;
+    height: 7vh;
+    color: black;
+    border-bottom: solid 1px black;
+    box-shadow: 2em;
+    margin-bottom: 1em;
+}
+
+/* div {
+    outline: solid 1px black;
+} */
+
+.logo {
+    max-height: 7vh;
+}
+
+.container {
+    min-height:30em; 
+    outline: solid 1px black;
+}
+
+.splash {
+    position: relative;
+    max-width: none;
+    width: 100%;
+}
+
+.splash > div {
+    color: white;
+    font-weight: bolder ;
+    position: absolute;
+    bottom: 0;
+    outline: solid 1px black;
+}
+
+.interactables {
+    flex: 1;
+    height: 1em;
+    outline: solid 1px black;
+}
+
+.info {
+    height: 60em;
+    max-width: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.info-content {
+    min-width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.opening-hours {
+    text-align: right;
+    padding: 1em;
+}
+
+.opening-hours, .gallery {
+    flex: 5;
+}
+
+.info > div {
+    outline: solid black 1px;
+}
+
+#info-window  > *{
+    color: white;
+    font-weight: bolder;
+    padding: 0;
+}
+.reviews {
+    max-height: 10em;
+}

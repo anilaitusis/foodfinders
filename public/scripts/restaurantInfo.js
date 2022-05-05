@@ -34,7 +34,10 @@ function callback(place, status) {
             lng: place.geometry.location.lng()
         });
         createMarker(place);
-        document.getElementById("info-window").innerHTML = place.adr_address
+        $("#info-window").html("<h1>" + place.name + "<h1>")
+        if(place.photos){
+            $(".splash").css("background-image", "url(" + place.photos[0].getUrl() + ")");
+        }
         setPlaceInfo(place)
         console.log(place)
     }
@@ -61,16 +64,17 @@ function setPlaceInfo(place) {
         $(".opening-hours").append("<p>" + day + "<p>")
     })
 
-    $(".price").append("<p> Price Level: " + place.price_level + "<p>")
-    $(".rating").append("<p> Avg Rating: " + place.rating + "<p>")
-    $(".vicinity").append("<p> Address: " + place.vicinity + "<p>")
+    for(let i = 0; i < place.price_level; i++) {
+        $(".price").append("$")
+    }
+    $(".rating").html("<p> Avg Rating: " + place.rating + "<p>")
+    $(".vicinity").html("<p>" + place.formatted_address+ "<p>")
 
     place.reviews.forEach((review) => {
         $(".reviews").append("<h4>" + review.author_name + "<h4>")
         $(".reviews").append("<h5>Rating: " + review.rating + "<h5>")
         $(".reviews").append("<p>" + review.text + "<p>")
         $(".reviews").append("<hr>")
-
     })
 }
 

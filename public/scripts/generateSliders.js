@@ -4,7 +4,7 @@ function addCard(container_class, i, id, query) {
     let img_container = $("<div>", { "class": "image" })
     let img = $("<img>", { "src": "" })
     let info = $("<div>", { "class": "name-profession", "onclick": "redirectInfo(\'" + id + "\', \'"+ query +"\')" })
-    let name = $("<div>", { "class": "name" })
+    let name = $("<a>", { "class": "name", "href" : `infopage.html?id=${id}`})
     let address = $("<div>", { "class": "address" })
     let rating = $("<div>", { "id": "rating-" + i, "class": "rating" })
     // let star = 
@@ -76,5 +76,5 @@ function fillSliders(results, container, query) {
 function redirectInfo(id, query) {
     // alert(id + ": " + query)
     storeResultsLocally(id, query)
-    window.location = `infopage.html?id=${id}`;
+    // window.location = `infopage.html?id=${id}`;
 }
