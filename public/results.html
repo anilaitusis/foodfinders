@@ -17,7 +17,6 @@
     <link rel="stylesheet" type="text/css" href="css/results.css">
     <link rel="stylesheet" type="text/css" href="css/cards.css">
 
-
     <script src="scripts/autocomplete.js"></script>
     <script src="scripts/previousResults.js"></script>
     <script src="scripts/cookieFunctions.js"></script>
@@ -27,13 +26,17 @@
 </head>
 
 <body>
-    <ul class="topnav">
-        <li><a href="index.html">Restaurant Random</a></li>
-        <li class="right"><a href="create_profile.html">Create Account</a></li>
-        <li class="right"><a href="login.html"> Log in</a></li>
-    </ul>
+    <header>
+        <a href="index.html"><img src="media/logo.png" alt="logo" class="logo"></a>
+        <div class="login-container">
+          <a href="create_profile.html">Create Account</a>
+          <a href="login.html"> Log in</a>
+        </div>
+      </header>
     <br>
     <br>
+
+    <!-- <div class="background-cover"></div> -->
     <!-- Map -->
     <div class="container map-container">
         <div id="map"></div>
@@ -42,7 +45,6 @@
             async>
             </script>
     </div>
-    <br>
 
     <div class="container show form">
         <form id="search">
@@ -57,50 +59,21 @@
             <script src="scripts/search.js"></script>
         </form>
     </div>
-    <br>
 
-    <!-- Selections -->
- 
+    <div class="background-cover" style="height: 98vh !important;"></div>
+
     <div class=" container result-container">
-        <p class="search"> Search results:</p>
         <section style="visibility: visible;">
-           
             <div class="swiper mySwiper container">
-                <div class="swiper-wrapper content" id="swiper-container">
-                </div>
+                <div class="swiper-wrapper content" id="swiper-container"></div>
             </div>
-
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
             <div class="swiper-pagination"></div>
         </section>
-<!-- Like/Dislike JS -->
-        <script>
-            var btnvar1 = document.getElementById('btnh1');
-                 function Toggle1(){
-                         if (btnvar1.style.color =="blue") {
-                             btnvar1.style.color = "grey"
-                         }
-                         else{
-                             btnvar1.style.color = "blue"
-                         }
-                }
-         
-            var btnvar2 = document.getElementById('btnh2');
-                 function Toggle2(){
-                  if (btnvar2.style.color =="red") {
-                      btnvar2.style.color = "grey"
-                  }
-                  else{
-                      btnvar2.style.color = "red"
-                  }
-                }
-         </script>
 
-        <!-- Swiper JS -->
         <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-        <!-- Initialize Swiper -->
         <script>
             var swiper = new Swiper(".mySwiper", {
                 slidesPerView: 3,
@@ -119,7 +92,15 @@
             });
         </script>
     </div>
-
+    <!-- FOOTER -->
+    <br><br>
+    <footer>
+        <ul class="footer-right">
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Settings</a></li>
+        </ul>
+    </footer>
 </body>
 
 </html>

@@ -23,30 +23,32 @@
 
 <body>
   <header>
-    <nav>
-      <ul id="nav_bar">
-        <li id="sign_in"><a href="create_profile.html">Create Account</a></li>
-        <li id="sign_in"><a href="login.html">Login In</a></li>
-      </ul>
-    </nav>
+    <a href="index.html"><img src="media/logo.png" alt="logo" class="logo"></a>
+    <div class="login-container">
+      <a href="create_profile.html">Create Account</a>
+      <a href="login.html"> Log in</a>
+    </div>
   </header>
+  <div class="container logo-container">
+    <img src="media/logo.png" class="big-logo">
+  </div>
 
-  <h1>Restaurant Randomizer </h1>
+  <div class="background-cover" style="height: 190vh !important;"></div>
 
   <div class="container map-container" style="display: none">
     <div id="map"></div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAi2P_fe95Y9Ee4FvXtKErVt9OF_pfPGgs&libraries=places&callback=initMap" async> </script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAi2P_fe95Y9Ee4FvXtKErVt9OF_pfPGgs&libraries=places&callback=initMap"
+      async> </script>
   </div>
 
-  <!-- TODO: Combine the Random Search with the Restaurant Search  -->
   <div class="container" style="display: flex; flex-direction: row;">
-
     <!-- Random Search -->
     <div class="login form">
       <form id="random">
         <label for="form-search"></label>
         <input type="text" id="zipcode" placeholder="City" autocomplete="address-level2" required>
-        <br><br>
+        <br><br><br>
         <input type="submit" value="Give me Recommendations">
       </form>
     </div>
@@ -147,7 +149,6 @@
 
   <!-- FOOTER -->
   <footer>
-
     <ul class="footer-right">
       <li><a href="#">Privacy</a></li>
       <li><a href="#">Terms</a></li>
