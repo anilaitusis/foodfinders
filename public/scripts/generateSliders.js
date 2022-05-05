@@ -9,9 +9,9 @@ function addCard(container_class, i, id, query) {
     let rating = $("<div>", { "id": "rating-" + i, "class": "rating" })
     // let star = 
     let vote = $("<div>", { "class": "vote" })
-    let thumbs_up = $("<button>", {"onclick": "toggleYes()", "id": "upvote-" + i})
+    let thumbs_up = $("<button>", {"onclick": "toggleYes(\'"+ id +"\')", "id": "upvote-" + i})
     let up_icon = $("<i>", {"class":"fa-regular fa-thumbs-up"})
-    let thumbs_down = $("<button>", {"onclick": "toggleNo()", "id": "downvote-" + i,})
+    let thumbs_down = $("<button>", {"onclick": "toggleNo(\'"+ id +"\')", "id": "downvote-" + i,})
     let down_icon = $("<i>", {"class":"fa-regular fa-thumbs-down"})
 
     rating.append($("<div>", { "class": "fas fa-star" }))

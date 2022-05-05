@@ -60,6 +60,7 @@ function callback(results, status, pagination) {
     // If there are search results
     if (status === google.maps.places.PlacesServiceStatus.OK && results) {
         console.log(results)
+        initVoting()
         fillSliders(results, "#swiper-container", query)
         // Create Markers
         for (let i = 0; i < results.length; i++) {
@@ -89,7 +90,50 @@ function createMarker(place, i) {
     });
 }
 
-// TODO: Implement voting system
-function vote(){
+function initVoting() {
+    if (getCookie("votes") === null || getCookie("votes") === undefined) {
+        addCookie("votes", "{}", "string")
+    }
+    if (getCookie("votes").length > 5) {
+        addCookie("votes", "{}", "string")
+    }
+}
 
+// TODO: Implement voting system
+function toggleNo(id){
+    let votes = JSON.parse(getCookie("votes"))
+
+    if(!votes.hasOwnProperty(id)) {
+        votes[id] = "neutral"
+    }
+
+    if(votes[id] === "neutral" || votes[id] === "like"){
+        votes[id] = "dislike"
+    }
+    else {
+        votes[id] = "neutral"
+    }
+
+    addCookie("votes", votes, "obj")
+    console.log(getCookie("votes"))
+    // Change color of thumbs down
+}
+
+function toggleYes(id){
+    let votes = JSON.parse(getCookie("votes"))
+
+    if(!votes.hasOwnProperty(id)) {
+        votes[id] = "neutral"
+    }
+
+    if(votes[id] === "neutral" || votes[id] === "dislike"){
+        votes[id] = "like"
+    }
+    else {
+        votes[id] = "neutral"
+    }
+
+    addCookie("votes", votes, "obj")
+    console.log(getCookie("votes"))
+    // Change color of thumbs down
 }

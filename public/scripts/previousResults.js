@@ -9,6 +9,7 @@ function updateHistory(name) {
     }
 
     // Parse History and store in object
+
     local_history = JSON.parse(getCookie("history"))
 
     // Check if history length is longer than 10

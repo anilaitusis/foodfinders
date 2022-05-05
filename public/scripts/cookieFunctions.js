@@ -10,10 +10,10 @@ function deleteCookie(name) {
 }
 
 function addCookie(name, data, storage_type) {
-    if(storage_type === 'array'){
+    if(storage_type === 'array' || storage_type === 'obj'){
         data = JSON.stringify(data)
     }
     document.cookie = name + "=" + data + ";"
                     + (new Date().getTime() + (7 * 24 * 60 * 60 * 1000)) + ";"
-    console.log(getCookie(name) + "added")
+    console.log(name + "=" + getCookie(name) + " added")
 }
