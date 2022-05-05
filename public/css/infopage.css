@@ -1,6 +1,10 @@
 .container {
     min-height:30em; 
-    outline: solid 1px black;
+    outline: solid 2px grey;
+    padding: 5px;
+    margin-bottom: 2px;
+    background-color: whitesmoke;
+
 }
 
 .splash {
@@ -10,17 +14,37 @@
 }
 
 .splash > div {
-    color: white;
+    color: black;
     font-weight: bolder ;
     position: absolute;
     bottom: 0;
     outline: solid 1px black;
+    background-color: grey;
+    opacity: .8;
+    border-top-left-radius: 10%;
+    border-top-right-radius: 10%;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    font: italic 1em "Fira Sans", serif;
 }
 
 .interactables {
     flex: 1;
-    height: 1em;
     outline: solid 1px black;
+    text-align: center;
+    word-spacing: 100px;
+    /* height: 2px; */
+}
+
+i:hover {
+    background-color: grey;
+}
+i {
+    height: 40px !important;
+    width: 40px !important;
 }
 
 .info {
@@ -41,6 +65,7 @@
 .opening-hours {
     text-align: right;
     padding: 1em;
+    font: small-caps bold 24px/1 sans-serif;
 }
 
 .opening-hours, .gallery {
@@ -52,10 +77,25 @@
 }
 
 #info-window  > *{
-    color: white;
+    color: black;
     font-weight: bolder;
     padding: 0;
+    font: italic 3em "Fira Sans", serif;
+    /* background-color: black; */
 }
 .reviews {
     max-height: 10em;
+    margin-bottom: 10vh;
+    padding-bottom: 4rem;
+    /* background-color: white; */
+    /* outline: solid 2px black; */
 }
+
+.review-card{
+    margin-bottom: 1rem;
+    padding: 4px;
+    outline: solid .5px black;
+    box-shadow: 2px 1px 1px black;
+
+}
+
