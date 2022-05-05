@@ -2,14 +2,13 @@ var local_history
 
 function updateHistory(name) {
     if (getCookie("history") === null || getCookie("history") === undefined) {
-        document.cookie = "history=[]; expires=" + (new Date().getTime() + (7 * 24 * 60 * 60 * 1000)) + ";"
+        addCookie("history", [], "array")
     }
     else if (!JSON.parse(getCookie("history")).length) {
-        document.cookie = "history=[]; expires=" + (new Date().getTime() + (7 * 24 * 60 * 60 * 1000)) + ";"
+        addCookie("history", [], "array")
     }
 
     // Parse History and store in object
-
     local_history = JSON.parse(getCookie("history"))
 
     // Check if history length is longer than 10
@@ -28,8 +27,7 @@ function updateHistory(name) {
     }
 
     local_history.push(name)
-    document.cookie = "history=" + JSON.stringify(local_history) + ";" 
-                    + (new Date().getTime() + (7 * 24 * 60 * 60 * 1000)) + ";"
+    addCookie("history", local_history, "array")
     console.log(document.cookie)
 }
 
